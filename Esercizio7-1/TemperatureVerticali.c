@@ -4,21 +4,33 @@
 
 int main() {
 	float temps[GIORNI];
+	int starsLen[GIORNI];
+	int maxLen = 0;
 	printf("Inserisci le temperature nei vari giorni\n");
+	float tot = 0, min = 1000, max = 0;
 	for (int i = 0; i < GIORNI; i++) {
 		printf("Temperatura giorno %d: ", i + 1);
 		scanf("%f", &temps[i]);
-	}
-	float tot = 0, min = 1000, max = 0;
-	char *pad = "************************";
-	printf("GIRONO\tVALORE\tISTOGRAMMA\n");
-	for (int i = 0; i < GIORNI; i++) {
+		starsLen[i] = floorf(temps[i] - 34);
+		maxLen = starsLen[i] > maxLen ? starsLen[i] : maxLen;
 		max = temps[i] > max ? temps[i] : max;
 		min = temps[i] < min ? temps[i] : min;
 		tot += temps[i];
-		int len = floorf(temps[i] - 34);
-		printf("%6d\t%6.1f\t%.*s\n", i + 1, temps[i], len > 0 ? len : 0, pad);
 	}
+	while (maxLen-- > 0) {
+		char str[512];
+		strcpy(str, "");
+		for (int i = 0; i < GIORNI; i++) {
+			strcat(str, ((starsLen[i] > 0) && (maxLen + 1 - starsLen[i] < 1)) ? "*" : "");
+			strcat(str, "\t");
+		}
+		strcat(str, "\n");
+		printf(str);
+	}
+	for (int i = 0; i < GIORNI; i++) {
+		printf("%.1f\t", temps[i]);
+	}
+	printf("\n");
 	printf("Temperatura minima: %.1f\n", min);
 	printf("Temperatura massima: %.1f\n", max);
 	printf("Temperatura media: %.1f\n", tot / GIORNI);

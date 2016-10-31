@@ -19,12 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Temperature.c" />
+    <ClCompile Include="TemperatureVerticali.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1026132D-7ABE-4C80-8364-BE88A8F7C129}</ProjectGuid>
+    <ProjectGuid>{1B528AC2-DB5C-4F2D-9AE5-405CB078515A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Esercizio61</RootNamespace>
+    <RootNamespace>Esercizio71</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
