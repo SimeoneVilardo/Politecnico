@@ -13,11 +13,11 @@ int main() {
 	int temp = 0;
 	int count = SIZE;
 	while (count-- > 0)
-		for (int j = 0; j < SIZE - 1; j++)
-			if (arr[j] > arr[j + 1]) {
-				temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
+		for (int i = 0; i < SIZE - 1; i++)
+			if (arr[i] > arr[i + 1]) {
+				temp = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = temp;
 			}
 	printf("Il nuovo array ordinato e': ");
 	for (int i = 0; i < SIZE; i++)
