@@ -11,7 +11,7 @@ int main() {
 		scanf("%d", &arr[i]);
 	}
 	int temp = 0;
-	int count = SIZE;
+	int count = SIZE -1;
 	while (count-- > 0)
 		for (int i = 0; i < SIZE - 1; i++)
 			if (arr[i] > arr[i + 1]) {
