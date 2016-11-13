@@ -5,6 +5,7 @@ void pflush();
 
 int main() {
 	int matrice[N][N];
+	float media[N][N];
 	printf("Inserisci i valori nella matrice\n");
 	for (int i = 0; i < N; i++)
 		for (int j = 0; j < N; j++) {
@@ -17,14 +18,14 @@ int main() {
 			for (int j2 = 0; j2 < N; j2++)
 				num = num + matrice[i][j2];
 			for (int i2 = 0; i2 < N; i2++)
-				if (i2 != j)
+				if (i2 != i)
 					num = num + matrice[i2][j];
-			matrice[i][j] = num / (N * 2 - 1);
+			media[i][j] = ((float)num) / (N * 2 - 1);
 		}
 	printf("La matrice delle medie e':\n");
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++)
-			printf("%d  ", matrice[i][j]);
+			printf("%.1f  ", media[i][j]);
 		printf("\n");
 	}
 	printf("Premere INVIO per terminare il programma\n");
