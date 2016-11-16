@@ -25,7 +25,10 @@ int main() {
 	for (int i = 0; i < K && somma != -1; i++) {
 		h += mosse[i].mossaRiga;
 		k += mosse[i].mossaColonna;
-		somma = (h < 0 || h >= N || k < 0 || k >= N) ? -1 : somma + matrice[h][k];
+		if (h < 0 || h >= N || k < 0 || k >= N)
+			somma = -1;
+		else
+			somma =+ matrice[h][k];
 	}
 	printf("Il totale dei valori selezionato e': %d", somma);
 	return 0;
