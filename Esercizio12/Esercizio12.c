@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-#define N 5
+#define K 5
 
 typedef struct { char nome[100]; char docente[100]; int numeroCFU; int voto; } Esame;
 
 int main() {
-	Esame esami[N];
-	for (int i = 0; i < N; i++) {
+	Esame esami[K];
+	for (int i = 0; i < K; i++) {
 		printf("Inserire il nome del corso: ");
 		scanf("%s", &esami[i].nome);
 		printf("Inserire il cognome del docente: ");
@@ -17,7 +17,7 @@ int main() {
 		scanf("%d", &esami[i].voto);
 	}
 	int somma = 0, totCFU = 0;
-	for (int i = 0; i < N; i++) {
+	for (int i = 0; i < K; i++) {
 		somma += esami[i].voto * esami[i].numeroCFU;
 		totCFU += esami[i].numeroCFU;
 		printf("Il nome del corso e': %s\n", esami[i].nome);

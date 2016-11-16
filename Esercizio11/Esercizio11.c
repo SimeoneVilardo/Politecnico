@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <math.h>
 
-#define N 40
+#define K 40
 
 int main() {
 	int num = 0;
-	int setaccio[N];
-	for (int i = 0; i < N; i++)
+	int setaccio[K];
+	for (int i = 0; i < K; i++)
 		setaccio[i] = i + 2;
-	int root = (int)sqrt(N);
+	int root = (int)sqrt(K);
 	for (int i = 0; i < root; i++)
-		for (int j = i + 1; j < N; j++)
+		for (int j = i + 1; j < K; j++)
 			if (setaccio[i] != 0 && !(setaccio[j] % setaccio[i]))
 				setaccio[j] = 0;
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < K; i++)
 		if (setaccio[i])
 			printf("%d ", setaccio[i]);
 	return 0;
