@@ -4,7 +4,6 @@
 #define K 40
 
 int main() {
-	int num = 0;
 	int setaccio[K];
 	for (int i = 0; i < K; i++)
 		setaccio[i] = i + 2;
