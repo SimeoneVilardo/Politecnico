@@ -2,38 +2,90 @@
 
 #define N 4
 
-void initMatrix(int matrix[][N]);
-void printMatrix(int matrix[][N]);
-void setInputData(int *p, int *q);
+typedef struct { int row; int column; } Index;
+typedef struct { Index initIndex; Index finalIndex; } MatrixID;
 
-int main() {
+void initMatrix(int matrix[][N]);
+void setUserValues(int *p, int *q);
+int printMatrix(int matrix[][N]);
+MatrixID getMaxSubMatrix(int matrix[][N], int p, int q);
+int printResult(int matrix[][N], MatrixID matrixId, int rows, int cols);
+void pflush();
+
+int main()
+{
 	int matrix[N][N];
-	int p, q;
 	initMatrix(matrix);
 	printMatrix(matrix);
-	setInputData(&p, &q);
+	int p = 0, q = 0;
+	setUserValues(&p, &q);
+	MatrixID matrixId = getMaxSubMatrix(matrix, p,q);
+	printResult(matrix, matrixId, p, q);
+	pflush();
+	getchar();
 	return 0;
 }
 
 void initMatrix(int matrix[][N]) {
+	int k = 0;
 	for (int i = 0; i < N; i++)
-		for (int j = 0; j < N; j++) {
-			printf("Inserire l'elemento alla riga %d e colonna %d: ", i + 1, j + 1);
-			scanf("%d", &matrix[i][j]);
-		}
+		for (int j = 0; j < N; j++)
+			matrix[i][j] = ++k;
 }
 
-void printMatrix(int matrix[][N]) {
+void setUserValues(int *p, int *q) {
+	printf("Inserire il numero di righe della sottomatrice da cercare: ");
+	scanf("%d", p);
+	printf("Inserire il numero di colonne della sottomatrice da cercare: ");
+	scanf("%d", q);
+}
+
+int printMatrix(int matrix[][N]) {
+	printf("La matrice di partenza e':\n\n");
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++)
-			printf("%-4d", matrix[i][j]);
+			printf("%-3d", matrix[i][j]);
 		printf("\n");
 	}
+	printf("\n");
 }
 
-void setInputData(int *p, int *q) {
-	printf("Inseire l'ordine delle righe: ");
-	scanf("%d", p);
-	printf("Inseire l'ordine delle colonne: ");
-	scanf("%d", q);
+int printResult(int matrix[][N], MatrixID matrixId, int rows, int cols) {
+	printf("La sottomatrice massima di ordine %dX%d nella matrice di ordine %dX%d e':\n\n", rows, cols, N, N);
+	for (int i = matrixId.initIndex.row; i < matrixId.finalIndex.row; i++) {
+		for (int j = matrixId.initIndex.column; j < matrixId.finalIndex.column; j++)
+			printf("%-3d", matrix[i][j]);
+		printf("\n");
+	}
+
+}
+
+MatrixID getMaxSubMatrix(int matrix[][N], int p, int q)
+{
+	MatrixID matrixId = { { 0,0 } ,{ 0,0 } };
+	int oldSum = 0;
+	for (int i = 0; i< N - p + 1; i++)
+	{
+		for (int j = 0; j< N - q + 1; j++)
+		{
+			int sum = 0;
+			for (int h = i; h < p + i; h++)
+				for (int k = j; k < q + j; k++)
+					sum += matrix[h][k];
+			if (sum > oldSum) {
+				oldSum = sum;
+				matrixId.initIndex.row = i;
+				matrixId.initIndex.column = j;
+				matrixId.finalIndex.row = i + p;
+				matrixId.finalIndex.column = j + q;
+			}
+				
+		}
+	}
+	return matrixId;
+}
+
+void pflush() {
+	char c;
+	while ((c = getchar()) != '\n' && c != EOF) {}
 }
