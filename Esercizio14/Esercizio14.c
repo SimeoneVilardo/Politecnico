@@ -44,7 +44,7 @@ int printMatrix(int matrix[][N]) {
 	printf("La matrice di partenza e':\n\n");
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++)
-			printf("%-3d", matrix[i][j]);
+			printf("%4d", matrix[i][j]);
 		printf("\n");
 	}
 	printf("\n");
@@ -54,10 +54,9 @@ int printResult(int matrix[][N], MatrixID matrixId, int rows, int cols) {
 	printf("La sottomatrice massima di ordine %dX%d nella matrice di ordine %dX%d e':\n\n", rows, cols, N, N);
 	for (int i = matrixId.initIndex.row; i < matrixId.finalIndex.row; i++) {
 		for (int j = matrixId.initIndex.column; j < matrixId.finalIndex.column; j++)
-			printf("%-3d", matrix[i][j]);
+			printf("%-4d", matrix[i][j]);
 		printf("\n");
 	}
-
 }
 
 MatrixID getMaxSubMatrix(int matrix[][N], int p, int q)
