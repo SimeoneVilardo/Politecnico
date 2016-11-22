@@ -14,12 +14,12 @@ void pflush();
 
 int main()
 {
-	int matrix[N][N];
-	initMatrix(matrix);
+	int matrix[N][N] = { {15,4,-21,8},{-34, -7, -7,4},{18, 26,9,2}, {-15,-5,3,29} }; // Valori presi dal testo
+	//initMatrix(matrix); // Abilitare questa funzione per inizializzare la matrice a valori crescenti
 	printMatrix(matrix);
 	int p = 0, q = 0;
 	setUserValues(&p, &q);
-	MatrixID matrixId = getMaxSubMatrix(matrix, p,q);
+	MatrixID matrixId = getMaxSubMatrix(matrix, p, q);
 	printResult(matrix, matrixId, p, q);
 	pflush();
 	getchar();
@@ -64,9 +64,9 @@ MatrixID getMaxSubMatrix(int matrix[][N], int p, int q)
 {
 	MatrixID matrixId = { { 0,0 } ,{ 0,0 } };
 	int oldSum = 0;
-	for (int i = 0; i< N - p + 1; i++)
+	for (int i = 0; i < N - p + 1; i++)
 	{
-		for (int j = 0; j< N - q + 1; j++)
+		for (int j = 0; j < N - q + 1; j++)
 		{
 			int sum = 0;
 			for (int h = i; h < p + i; h++)
@@ -79,7 +79,6 @@ MatrixID getMaxSubMatrix(int matrix[][N], int p, int q)
 				matrixId.finalIndex.row = i + p;
 				matrixId.finalIndex.column = j + q;
 			}
-				
 		}
 	}
 	return matrixId;
