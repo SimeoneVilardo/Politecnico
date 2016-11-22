@@ -43,9 +43,9 @@ void setArray(int arr[], int size, char* text) {
 
 Stat bubbleSort(int arr[], int size) {
 	Stat stat = { 0,0 };
-	int count = SIZE - 1;
+	int count = size - 1;
 	while (count-- > 0)
-		for (int i = 0; i < SIZE - 1; i++) {
+		for (int i = 0; i < size - 1; i++) {
 			stat.checks++;
 			if (arr[i] > arr[i + 1]) {
 				stat.swaps++;
