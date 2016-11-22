@@ -13,7 +13,7 @@ int main() {
 	int** pMatrix = (int**)malloc(sizeof(int) * SIZE); 
 	// E' necessario inizializzare anche ogni elemento dell'array come array (una matrice è di fatto un array di array)
 	for (int i = 0; i < SIZE; i++)
-		pMatrix[i] = (int*)malloc(SIZE * sizeof(float));
+		pMatrix[i] = (int*)malloc(SIZE * sizeof(int));
 
 	// Inizializzazione dei valori della matrice statica
 	for (int i = 0; i < SIZE; i++)
