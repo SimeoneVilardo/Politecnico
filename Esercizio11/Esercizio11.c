@@ -13,7 +13,7 @@ int main() {
 			if (setaccio[i] != 0 && (setaccio[j] % setaccio[i]) == 0)
 				setaccio[j] = 0;
 	for (int i = 0; i < K; i++)
-		if (setaccio[i])
+		if (setaccio[i] != 0)
 			printf("%d ", setaccio[i]);
 	return 0;
 }
