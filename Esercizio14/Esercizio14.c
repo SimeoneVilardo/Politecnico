@@ -10,11 +10,12 @@ void setUserValues(int *p, int *q);
 int printMatrix(int matrix[][N]);
 MatrixID getMaxSubMatrix(int matrix[][N], int p, int q);
 int printResult(int matrix[][N], MatrixID matrixId, int rows, int cols);
+int sumMatrix(int matrix[][N], int i, int j, int p, int q);
 void pflush();
 
 int main()
 {
-	int matrix[N][N] = { {15,4,-21,8},{-34, -7, -7,4},{18, 26,9,2}, {-15,-5,3,29} }; // Valori presi dal testo
+	int matrix[N][N] = { {15,4,-21,8}, {-34, -7, -7,4}, {18, 26,9,2}, {-15,-5,3,29} }; // Valori presi dal testo
 	//initMatrix(matrix); // Abilitare questa funzione per inizializzare la matrice a valori crescenti
 	printMatrix(matrix);
 	int p = 0, q = 0;
@@ -59,6 +60,14 @@ int printResult(int matrix[][N], MatrixID matrixId, int rows, int cols) {
 	}
 }
 
+int sumMatrix(int matrix[][N], int i, int j, int p, int q) {
+	int sum = 0;
+	for (int h = i; h < p + i; h++)
+		for (int k = j; k < q + j; k++)
+			sum += matrix[h][k];
+	return sum;
+}
+
 MatrixID getMaxSubMatrix(int matrix[][N], int p, int q)
 {
 	MatrixID matrixId = { { 0,0 } ,{ 0,0 } };
@@ -67,10 +76,7 @@ MatrixID getMaxSubMatrix(int matrix[][N], int p, int q)
 	{
 		for (int j = 0; j < N - q + 1; j++)
 		{
-			int sum = 0;
-			for (int h = i; h < p + i; h++)
-				for (int k = j; k < q + j; k++)
-					sum += matrix[h][k];
+			int sum = sumMatrix(matrix, i, j, p, q);
 			if (sum > oldSum) {
 				oldSum = sum;
 				matrixId.initIndex.row = i;
