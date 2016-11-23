@@ -22,7 +22,7 @@ int main() {
 	printArray(arr2, SIZE, "Il secondo array originale e':");
 	Stat stat1 = bubbleSort(arr1, SIZE);
 	Stat stat2 = bubbleSort(arr2, SIZE);
-	Stat stat = { stat1.checks + stat2.checks, stat2.swaps + stat2.swaps };
+	Stat stat = { stat1.checks + stat2.checks, stat1.swaps + stat2.swaps };
 	printArray(arr1, SIZE, "Il primo array ordinato e':");
 	printArray(arr2, SIZE, "Il secondo array ordinato e':");
 	sumArrays(arr1, arr2, SIZE, sumArr, SUM_SIZE);
