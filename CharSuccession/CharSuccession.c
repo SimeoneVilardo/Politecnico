@@ -22,7 +22,7 @@ int main() {
 			newSuc = 0;
 		}	
 	}
-	printf("La piu' lunga successione e': %d", oldSuc);
+	printf("La piu' lunga successione e': %d", oldSuc > newSuc ? oldSuc : newSuc);
 	pflush();
 	getchar();
 	return 0;
