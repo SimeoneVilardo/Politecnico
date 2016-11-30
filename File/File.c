@@ -128,6 +128,7 @@ void writeCharByChar(char* text, char* path) {
 	if (file) {
 		fputs(text, file);
 		fclose(file);
+		printf("Il file %s e' stato scritto", path);
 	}
 	else
 		printf("Impossibile aprire il file %s", path);
@@ -139,6 +140,7 @@ void writeFprintf(char* text, char* path) {
 	if (file) {
 		fprintf(file, "%s", text);
 		fclose(file);
+		printf("Il file %s e' stato scritto", path);
 	}
 	else
 		printf("Impossibile aprire il file %s", path);
