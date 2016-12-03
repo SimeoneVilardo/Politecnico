@@ -22,7 +22,7 @@ char findCapInStrLogic(char* str, int len, int index, int capital);
 
 int main() {
 	int op = 0;
-	printf("Ricursione");
+	printf("Recursione");
 	do {
 		printf("\nMenu Principale:\n");
 		printf("  1) Calcola fattoriale\n");
