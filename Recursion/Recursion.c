@@ -18,15 +18,17 @@ void reverseString();
 void findCapitalInString();
 void sumMatrix();
 void findLargestSubMatrixInMatrix();
+void reverseBubbleSort();
 int factLogic(int num);
 int expLogic(int base, int exponent);
 int palLogic(char str[], int start, int end);
 int findInArrayLogic(int* arr, int len, int el, int index);
 int findLarInArrLogic(int* arr, int len, int largest, int index);
-char* reverseStrLogic(char* str, int len, int index);
+void reverseStrLogic(char* str, int len, int index);
 char findCapInStrLogic(char* str, int len, int index, int capital);
 int sumMatrixLogic(int** matrix, int rows, int cols, int rIndex, int cIndex);
 MatrixID findLarSubMatrixInMatrixLogic(int** matrix, int rows, int cols, int sRows, int sCols, int rIndex, int cIndex, int smrIndex, int smcIndex, int oldSum, int newSum, MatrixID matrixId);
+void reverseBubbleSortLogic(int* arr, int len, int arrIndex, int bsIndex);
 
 int main() {
 	int op = 0;
@@ -42,6 +44,7 @@ int main() {
 		printf("  7) Trova la prima lettera maiuscola in una stringa\n");
 		printf("  8) Somma gli elementi di una matrice\n");
 		printf("  9) Trova la sottomatrice massima in una matrice\n");
+		printf("  10) Ordina un array in ordine decrescente\n");
 		printf("  99) Chiudi\n");
 		printf("\nNumero operazione: ");
 		scanf("%d", &op);
@@ -75,6 +78,9 @@ int main() {
 		case 9:
 			findLargestSubMatrixInMatrix();
 			break;
+		case 10:
+			reverseBubbleSort();
+			break;
 		case 99:
 			printf("L'applicazione sara' terminata");
 			break;
@@ -87,6 +93,35 @@ int main() {
 		getchar();
 	} while (op != 99);
 	return 0;
+}
+
+void reverseBubbleSort() {
+	int len = 0;
+	printf("Inserisci la lunghezza dell'array: ");
+	scanf("%d", &len);
+	int* arr = createRandomArray(len);
+	printf("L'array generato e':\n");
+	for (int i = 0; i < len; i++)
+		printf("%d ", arr[i]);
+	reverseBubbleSortLogic(arr, len, 0, 0);
+	printf("\nL'array ordinato e':\n");
+	for (int i = 0; i < len; i++)
+		printf("%d ", arr[i]);
+}
+
+void reverseBubbleSortLogic(int* arr, int len, int arrIndex, int bsIndex) {
+	if (bsIndex >= len - 1)
+		return;
+	if (arrIndex >= len - 1) {
+		bsIndex = bsIndex + 1;
+		arrIndex = 0;
+	}
+	if (arr[arrIndex + 1] > arr[arrIndex]) {
+		int temp = arr[arrIndex];
+		arr[arrIndex] = arr[arrIndex + 1];
+		arr[arrIndex + 1] = temp;
+	}
+	reverseBubbleSortLogic(arr, len, arrIndex + 1, bsIndex);
 }
 
 void findLargestSubMatrixInMatrix() {
@@ -184,13 +219,13 @@ void reverseString() {
 	char str[100];
 	printf("Inserisci una stringa: ");
 	scanf("%s", str);
-	char* reversedStr = reverseStrLogic(str, strlen(str), 0);
-	printf("La stringa invertita e': %s", reversedStr);
+	reverseStrLogic(str, strlen(str), 0);
+	printf("La stringa invertita e': %s", str);
 }
 
-char* reverseStrLogic(char* str, int len, int index) {
+void reverseStrLogic(char* str, int len, int index) {
 	if (index >= len / 2)
-		return str;
+		return;
 	else
 	{
 		char c = str[index];
