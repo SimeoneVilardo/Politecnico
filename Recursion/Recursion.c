@@ -5,6 +5,7 @@
 
 void pflush();
 int* createRandomArray(int len);
+int** createRandomMatrix(int rows, int cols);
 void factorial();
 void exponentiation();
 void palindrome();
@@ -12,6 +13,7 @@ void findInArray();
 void findLargestInArray();
 void reverseString();
 void findCapitalInString();
+void sumMatrix();
 int factLogic(int num);
 int expLogic(int base, int exponent);
 int palLogic(char str[], int start, int end);
@@ -19,6 +21,7 @@ int findInArrayLogic(int* arr, int len, int el, int index);
 int findLarInArrLogic(int* arr, int len, int largest, int index);
 char* reverseStrLogic(char* str, int len, int index);
 char findCapInStrLogic(char* str, int len, int index, int capital);
+int sumMatrixLogic(int** matrix, int rows, int cols, int rIndex, int cIndex);
 
 int main() {
 	int op = 0;
@@ -28,10 +31,11 @@ int main() {
 		printf("  1) Calcola fattoriale\n");
 		printf("  2) Calcola potenza\n");
 		printf("  3) Controlla se una parola e' palindroma\n");
-		printf("  4) Trova elemento in array\n");
+		printf("  4) Trova elemento in un array\n");
 		printf("  5) Trova l'elemento piu' grande in un array\n");
 		printf("  6) Inverti una stringa\n");
 		printf("  7) Trova la prima lettera maiuscola in una stringa\n");
+		printf("  8) Somma elementi in una matrice\n");
 		printf("  99) Chiudi\n");
 		printf("\nNumero operazione: ");
 		scanf("%d", &op);
@@ -59,6 +63,9 @@ int main() {
 		case 7:
 			findCapitalInString();
 			break;
+		case 8:
+			sumMatrix();
+			break;
 		case 99:
 			printf("L'applicazione sara' terminata");
 			break;
@@ -72,6 +79,43 @@ int main() {
 	} while (op != 99);
 	return 0;
 }
+
+void sumMatrix() {
+	int rows = 0, cols = 0, sRows = 0, sCols = 0;
+	printf("Inserisci il numero di righe della matrice: ");
+	scanf("%d", &rows);
+	printf("Inserisci il numero di colonne della matrice: ");
+	scanf("%d", &cols);
+	int** matrix = createRandomMatrix(rows, cols);
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++)
+			printf("%4d ", matrix[i][j]);
+		putchar('\n');
+	}
+	int sum = sumMatrixLogic(matrix, rows, cols, 0, 0);
+	printf("La somma di tutti gli elementi della matrice e': %d", sum);
+}
+
+int sumMatrixLogic(int** matrix, int rows, int cols, int rIndex, int cIndex) {
+	if (rIndex >= rows - 1 && cIndex >= cols)
+		return 0;
+	else {
+		if (cIndex >= cols) {
+			rIndex = rIndex + 1;
+			cIndex = 0;
+		}
+		return matrix[rIndex][cIndex] + sumMatrixLogic(matrix, rows, cols, rIndex, cIndex + 1);
+	}
+}
+
+int sumCol(int** matrix, int rows, int cols, int rIndex) {
+	return rIndex >= rows ? 0 : sumRow(matrix[rIndex], cols, 0) + sumCol(matrix, rows, cols, rIndex + 1);
+}
+
+int sumRow(int * row, int len, int index) {
+	return index >= len ? 0 : row[index] + sumRow(row, len, index + 1);
+}
+
 void findCapitalInString() {
 	char str[100];
 	printf("Inserisci una stringa: ");
@@ -81,7 +125,7 @@ void findCapitalInString() {
 }
 
 char findCapInStrLogic(char* str, int len, int index, int capital) {
-	return index >= len ? capital : findCapInStrLogic(str, len, index + 1, str[index] >= 'A' && str[index] < 'Z' ? str[index] : capital);
+	return index >= len || capital > -1 ? capital : findCapInStrLogic(str, len, index + 1, str[index] >= 'A' && str[index] < 'Z' ? str[index] : capital);
 }
 
 void reverseString() {
@@ -93,7 +137,7 @@ void reverseString() {
 }
 
 char* reverseStrLogic(char* str, int len, int index) {
-	if (index > len / 2 - 1)
+	if (index >= len / 2)
 		return str;
 	else
 	{
@@ -144,6 +188,19 @@ int* createRandomArray(int len) {
 	for (int i = 0; i < len; i++)
 		arr[i] = rand() % 100;
 	return arr;
+}
+
+int** createRandomMatrix(int rows, int cols) {
+	int** matrix = (int**)malloc(sizeof(int*) * rows);
+	srand(time(NULL));
+	for (int i = 0; i < rows; i++) {
+		int* arr = (int*)malloc(sizeof(int) * cols);
+		for (int j = 0; j < cols; j++) {
+			arr[j] = rand() % 100;
+		}
+		matrix[i] = arr;
+	}
+	return matrix;
 }
 
 void palindrome() {
