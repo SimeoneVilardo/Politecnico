@@ -116,38 +116,27 @@ void findLargestSubMatrixInMatrix() {
 }
 
 MatrixID findLarSubMatrixInMatrixLogic(int** matrix, int rows, int cols, int sRows, int sCols, int rIndex, int cIndex, int smrIndex, int smcIndex, int oldSum, int newSum, MatrixID matrixId) {
-	if (rows == sRows && cols == sCols) {
-		matrixId.initIndex.row = 0;
-		matrixId.initIndex.column = 0;
-		matrixId.finalIndex.row = rows-1;
-		matrixId.finalIndex.column = cols-1;
-		return matrixId;
-	}
-	if (smrIndex + rIndex >= rows - 1 && smcIndex + cIndex >= cols)
-		return matrixId;
-	if (rIndex >= sRows - 1 && cIndex >= sCols)
-	{
+	if (rIndex + 1 == sRows && cIndex == sCols) {
 		if (newSum > oldSum) {
-			matrixId.initIndex.row = smrIndex;
-			matrixId.initIndex.column = smcIndex;
-			matrixId.finalIndex.row = smrIndex + rIndex;
-			matrixId.finalIndex.column = smcIndex + cIndex - 1;
 			oldSum = newSum;
+			matrixId = (MatrixID) { { smrIndex, smcIndex }, { smrIndex + rIndex, smcIndex + cIndex - 1 } };
 		}
+		if (smrIndex + rIndex + 1 == rows && smcIndex + cIndex == cols)
+			return matrixId;
 		newSum = 0;
 		smcIndex = smcIndex + 1;
+		cIndex = 0;
 		rIndex = 0;
-		cIndex = 0;
 	}
-	if (cIndex >= sCols) {
-		rIndex = rIndex + 1;
-		cIndex = 0;
-	}
-	if (smcIndex + cIndex >= cols) {
+	if (smcIndex - 1== cols - sCols) {
 		smcIndex = 0;
 		smrIndex = smrIndex + 1;
 	}
-	newSum += matrix[smrIndex+ rIndex][smcIndex + cIndex];
+	if (cIndex == sCols) {
+		rIndex = rIndex + 1;
+		cIndex = 0;
+	}
+	newSum += matrix[smrIndex + rIndex][smcIndex + cIndex];
 	return findLarSubMatrixInMatrixLogic(matrix, rows, cols, sRows, sCols, rIndex, cIndex + 1, smrIndex, smcIndex, oldSum, newSum, matrixId);
 }
 
