@@ -3,6 +3,9 @@
 #include <time.h>
 #include <stdlib.h>
 
+typedef struct { int row; int column; } Index;
+typedef struct { Index initIndex; Index finalIndex; } MatrixID;
+
 void pflush();
 int* createRandomArray(int len);
 int** createRandomMatrix(int rows, int cols);
@@ -14,6 +17,7 @@ void findLargestInArray();
 void reverseString();
 void findCapitalInString();
 void sumMatrix();
+void findLargestSubMatrixInMatrix();
 int factLogic(int num);
 int expLogic(int base, int exponent);
 int palLogic(char str[], int start, int end);
@@ -22,6 +26,7 @@ int findLarInArrLogic(int* arr, int len, int largest, int index);
 char* reverseStrLogic(char* str, int len, int index);
 char findCapInStrLogic(char* str, int len, int index, int capital);
 int sumMatrixLogic(int** matrix, int rows, int cols, int rIndex, int cIndex);
+MatrixID findLarSubMatrixInMatrixLogic(int** matrix, int rows, int cols, int sRows, int sCols, int rIndex, int cIndex, int smrIndex, int smcIndex, int oldSum, int newSum, MatrixID matrixId);
 
 int main() {
 	int op = 0;
@@ -35,7 +40,8 @@ int main() {
 		printf("  5) Trova l'elemento piu' grande in un array\n");
 		printf("  6) Inverti una stringa\n");
 		printf("  7) Trova la prima lettera maiuscola in una stringa\n");
-		printf("  8) Somma elementi in una matrice\n");
+		printf("  8) Somma gli elementi di una matrice\n");
+		printf("  9) Trova la sottomatrice massima in una matrice\n");
 		printf("  99) Chiudi\n");
 		printf("\nNumero operazione: ");
 		scanf("%d", &op);
@@ -66,6 +72,9 @@ int main() {
 		case 8:
 			sumMatrix();
 			break;
+		case 9:
+			findLargestSubMatrixInMatrix();
+			break;
 		case 99:
 			printf("L'applicazione sara' terminata");
 			break;
@@ -78,6 +87,68 @@ int main() {
 		getchar();
 	} while (op != 99);
 	return 0;
+}
+
+void findLargestSubMatrixInMatrix() {
+	int rows = 0, cols = 0, sRows = 0, sCols = 0;
+	printf("Inserisci il numero di righe della matrice: ");
+	scanf("%d", &rows);
+	printf("Inserisci il numero di colonne della matrice: ");
+	scanf("%d", &cols);
+	printf("Inserisci il numero di righe della sotto-matrice: ");
+	scanf("%d", &sRows);
+	printf("Inserisci il numero di colonne della sotto-matrice: ");
+	scanf("%d", &sCols);
+	int** matrix = createRandomMatrix(rows, cols);
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++)
+			printf("%4d ", matrix[i][j]);
+		putchar('\n');
+	}
+	MatrixID matrixId = { {0,0},{0,0} };
+	matrixId = findLarSubMatrixInMatrixLogic(matrix, rows, cols, sRows, sCols, 0, 0, 0, 0, 0, 0, matrixId);
+	printf("La sottomatrice massima di ordine %dX%d nella matrice di ordine %dX%d e':\n", sRows, sCols, rows, cols);
+	for (int i = matrixId.initIndex.row; i <= matrixId.finalIndex.row; i++) {
+		for (int j = matrixId.initIndex.column; j <= matrixId.finalIndex.column; j++)
+			printf("%4d ", matrix[i][j]);
+		printf("\n");
+	}
+}
+
+MatrixID findLarSubMatrixInMatrixLogic(int** matrix, int rows, int cols, int sRows, int sCols, int rIndex, int cIndex, int smrIndex, int smcIndex, int oldSum, int newSum, MatrixID matrixId) {
+	if (rows == sRows && cols == sCols) {
+		matrixId.initIndex.row = 0;
+		matrixId.initIndex.column = 0;
+		matrixId.finalIndex.row = rows-1;
+		matrixId.finalIndex.column = cols-1;
+		return matrixId;
+	}
+	if (smrIndex + rIndex >= rows - 1 && smcIndex + cIndex >= cols)
+		return matrixId;
+	if (rIndex >= sRows - 1 && cIndex >= sCols)
+	{
+		if (newSum > oldSum) {
+			matrixId.initIndex.row = smrIndex;
+			matrixId.initIndex.column = smcIndex;
+			matrixId.finalIndex.row = smrIndex + rIndex;
+			matrixId.finalIndex.column = smcIndex + cIndex - 1;
+			oldSum = newSum;
+		}
+		newSum = 0;
+		smcIndex = smcIndex + 1;
+		rIndex = 0;
+		cIndex = 0;
+	}
+	if (cIndex >= sCols) {
+		rIndex = rIndex + 1;
+		cIndex = 0;
+	}
+	if (smcIndex + cIndex >= cols) {
+		smcIndex = 0;
+		smrIndex = smrIndex + 1;
+	}
+	newSum += matrix[smrIndex+ rIndex][smcIndex + cIndex];
+	return findLarSubMatrixInMatrixLogic(matrix, rows, cols, sRows, sCols, rIndex, cIndex + 1, smrIndex, smcIndex, oldSum, newSum, matrixId);
 }
 
 void sumMatrix() {
