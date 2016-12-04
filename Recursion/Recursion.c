@@ -108,14 +108,6 @@ int sumMatrixLogic(int** matrix, int rows, int cols, int rIndex, int cIndex) {
 	}
 }
 
-int sumCol(int** matrix, int rows, int cols, int rIndex) {
-	return rIndex >= rows ? 0 : sumRow(matrix[rIndex], cols, 0) + sumCol(matrix, rows, cols, rIndex + 1);
-}
-
-int sumRow(int * row, int len, int index) {
-	return index >= len ? 0 : row[index] + sumRow(row, len, index + 1);
-}
-
 void findCapitalInString() {
 	char str[100];
 	printf("Inserisci una stringa: ");
