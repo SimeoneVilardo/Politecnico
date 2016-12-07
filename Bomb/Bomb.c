@@ -62,11 +62,10 @@ int main() {
 	printf("Inserisci quattro cavi nel formato [colore colore colore colore]: ");
 	scanf("%16s %16s %16s %16s", wires[0], wires[1], wires[2], wires[3]);
 	pflush();
-	Color col, nextCol;
+	Color col = getColorByName(colors, wires[0], colLen), nextCol;
 	int boom = 0;
-	for (int i = 0; i < WIRES_LEN - 1 && !boom; i++) {
-		col = getColorByName(colors, wires[i], colLen);
-		nextCol = getColorByName(colors, wires[i + 1], colLen);
+	for (int i = 1; i < WIRES_LEN && !boom; i++) {
+		nextCol = getColorByName(colors, wires[i], colLen);
 		if (col.value < 0 || nextCol.value < 0)
 		{
 			printf("Cavo non valido.\n");
@@ -74,6 +73,7 @@ int main() {
 			return 1;
 		}
 		boom = col.rule & nextCol.value;
+		col = nextCol;
 	}		
 	boom ? printf("BOOM! Sei morto.\n") : printf("Congratulazioni, bomba disinnescata.\n");	
 	getchar();
