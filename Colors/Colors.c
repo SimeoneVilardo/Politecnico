@@ -1,14 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct
-{
-	char* name;
-	int value;
-} Colors[];
-
 #define SIZE_ARR(x)  (sizeof(x) / sizeof((x)[0]))
+#define EXIT_CODE 99
 
+typedef struct {char* name; int value;} Colors[];
 void pflush();
 
 int main() {
@@ -18,11 +14,11 @@ int main() {
 	Colors colors = { {"bianco", 1 << 1}, {"rosso", 1 << 2}, {"nero", 1 << 3}, {"arancione", 1 << 4}, {"verde", 1 << 5}, {"viola", 1 << 6} };
 	int op = 0;
 	int color = 0;
-	while (op != 99)
+	while (op != EXIT_CODE)
 	{
 		for (int i = 0; i < SIZE_ARR(colors); i++)
 			printf("%d)  %s %s\n", i+1, color & colors[i].value ? "Rimuovi" : "Aggiungi", colors[i].name);
-		printf("99) Esci\n");
+		printf("%d) Esci\n", EXIT_CODE);
 		printf("Operazione: ");
 		scanf("%d", &op);
 		color ^= colors[op - 1].value;
