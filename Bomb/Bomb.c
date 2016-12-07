@@ -43,11 +43,12 @@ typedef struct
 	RULE_VALUE rule;
 } Color;
 
+int cutWires(Color*, int, int);
 Color getColorByName(Color*, char*, int);
 void pflush();
 
 int main() {
-	Color colors[] = {
+	Color bombColors[] = {
 		{ "bianco", VAL_WHITE, RUL_WHITE },
 		{ "rosso", VAL_RED, RUL_RED },
 		{ "nero", VAL_BLACK, RUL_BLACK },
@@ -55,29 +56,27 @@ int main() {
 		{ "verde", VAL_GREEN, RUL_GREEN },
 		{ "viola", VAL_PURPLE, RUL_PURPLE }
 	};
-	int colLen = SIZE_ARR(colors);
 	char wires[WIRES_LEN][STR_LEN];
 	printf("** Bomba **\n");
 	printf("C'e' una bomba! Per disinnescarla devi tagliare i cavi.\nI cavi sono bianco, nero, viola, rosso, verde ed arancione. Ci sono piu' cavi dello stesso colore.\nDecidi quali cavi tagliare.\n");
 	printf("Inserisci quattro cavi nel formato [colore colore colore colore]: ");
 	scanf("%16s %16s %16s %16s", wires[0], wires[1], wires[2], wires[3]);
 	pflush();
-	Color col = getColorByName(colors, wires[0], colLen), nextCol;
-	int boom = 0;
-	for (int i = 1; i < WIRES_LEN && !boom; i++) {
-		nextCol = getColorByName(colors, wires[i], colLen);
-		if (col.value < 0 || nextCol.value < 0)
+	Color userColors[WIRES_LEN];
+	for (int i = 0; i < WIRES_LEN; i++) 
+		if ((userColors[i] = getColorByName(bombColors, wires[i], SIZE_ARR(bombColors))).value < 0)
 		{
 			printf("Cavo non valido.\n");
 			getchar();
 			return 1;
-		}
-		boom = col.rule & nextCol.value;
-		col = nextCol;
-	}		
-	boom ? printf("BOOM! Sei morto.\n") : printf("Congratulazioni, bomba disinnescata.\n");	
+		}	
+	cutWires(userColors, WIRES_LEN, 0) ? printf("BOOM! Sei morto.\n") : printf("Congratulazioni, bomba disinnescata.\n");
 	getchar();
 	return 0;
+}
+
+int cutWires(Color* userColors, int len, int index) {
+	return index < len - 1 ? ((userColors[index].rule & userColors[index + 1].value) || cutWires(userColors, len, index + 1)) : 0;
 }
 
 Color getColorByName(Color* colors, char* name, int len) {
