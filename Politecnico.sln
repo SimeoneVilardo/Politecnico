@@ -73,6 +73,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Colors", "Colors\Colors.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bomb", "Bomb\Bomb.vcxproj", "{7E701909-A5A4-489E-B7FC-E9EBD8EEAA04}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Digits", "Digits\Digits.vcxproj", "{C052E274-33D1-47F9-B422-651521E56D92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -361,6 +363,14 @@ Global
 		{7E701909-A5A4-489E-B7FC-E9EBD8EEAA04}.Release|x64.Build.0 = Release|x64
 		{7E701909-A5A4-489E-B7FC-E9EBD8EEAA04}.Release|x86.ActiveCfg = Release|Win32
 		{7E701909-A5A4-489E-B7FC-E9EBD8EEAA04}.Release|x86.Build.0 = Release|Win32
+		{C052E274-33D1-47F9-B422-651521E56D92}.Debug|x64.ActiveCfg = Debug|x64
+		{C052E274-33D1-47F9-B422-651521E56D92}.Debug|x64.Build.0 = Debug|x64
+		{C052E274-33D1-47F9-B422-651521E56D92}.Debug|x86.ActiveCfg = Debug|Win32
+		{C052E274-33D1-47F9-B422-651521E56D92}.Debug|x86.Build.0 = Debug|Win32
+		{C052E274-33D1-47F9-B422-651521E56D92}.Release|x64.ActiveCfg = Release|x64
+		{C052E274-33D1-47F9-B422-651521E56D92}.Release|x64.Build.0 = Release|x64
+		{C052E274-33D1-47F9-B422-651521E56D92}.Release|x86.ActiveCfg = Release|Win32
+		{C052E274-33D1-47F9-B422-651521E56D92}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
