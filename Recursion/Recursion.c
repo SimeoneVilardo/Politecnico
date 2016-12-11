@@ -247,8 +247,27 @@ void findLargestInArray() {
 	printf("\nL'elemento piu' grande nell'array e': %d", largest);
 }
 
+//int findLarInArrLogic(int* arr, int len, int largest, int index) {
+//	return index >= len - 1 ? largest : findLarInArrLogic(arr, len, (largest > arr[index] ? largest : arr[index]), index + 1);
+//}
+
+//Per Laura
 int findLarInArrLogic(int* arr, int len, int largest, int index) {
-	return index >= len - 1 ? largest : findLarInArrLogic(arr, len, (largest > arr[index] ? largest : arr[index]), index + 1);
+	if (index >= len - 1) {
+		return largest;
+	}
+	else
+	{
+		int tmpLargest;
+		if (largest > arr[index]) {
+			tmpLargest = largest;
+		}
+		else
+		{
+			tmpLargest = arr[index];
+		}
+		return findLarInArrLogic(arr, len, tmpLargest, index + 1);
+	}
 }
 
 void findInArray() {
