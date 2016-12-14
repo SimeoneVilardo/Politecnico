@@ -12,7 +12,7 @@ int main() {
 		return 1;
 	}		
 	for (int i = 0; str[i] != '\0'; i++)
-		if (fputc(str[i], fileToWrite) == EOF) {
+		if (fputc(str[i], fileToWrite) == EOF || ferror(fileToWrite)) {
 			printf("Errore durante la scrittura del file");
 			getchar();
 			return 1;
