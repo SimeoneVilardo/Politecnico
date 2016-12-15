@@ -10,7 +10,7 @@ int mod(int a, int b) { return a % b; }
 int clcPxExp(char*, OpFn[]);
 
 int main() {
-	OpFn ops[5];
+	OpFn ops[256];
 	ops['+'] = &add;
 	ops['-'] = &subtract;
 	ops['*'] = &muliply;
