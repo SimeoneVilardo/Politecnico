@@ -124,7 +124,7 @@ void readFscanf(char* path) {
 
 void writeCharByChar(char* text, char* path) {
 	FILE *file = NULL;
-	file = fopen(path, "ab+");
+	file = fopen(path, "w");
 	if (file) {
 		fputs(text, file);
 		fclose(file);
@@ -136,7 +136,7 @@ void writeCharByChar(char* text, char* path) {
 
 void writeFprintf(char* text, char* path) {
 	FILE *file = NULL;
-	file = fopen(path, "ab+");
+	file = fopen(path, "w");
 	if (file) {
 		fprintf(file, "%s", text);
 		fclose(file);

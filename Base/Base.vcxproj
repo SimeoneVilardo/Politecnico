@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1E96E43C-F951-407A-95E0-B7C9B19489A0}</ProjectGuid>
+    <ProjectGuid>{8DC2E1C3-89BA-44FB-83C3-89EEEF0BE335}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>File</RootNamespace>
+    <RootNamespace>Base</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -142,11 +142,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="File.c" />
+    <ClInclude Include="baselib.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\write_text.txt" />
-    <Text Include="read_text.txt" />
+    <ClCompile Include="Base.c" />
+    <ClCompile Include="baselib.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
