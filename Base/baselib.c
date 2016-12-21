@@ -18,30 +18,34 @@ int* convertStringToIntArr(char* num, int size) {
 	int* arr = malloc(sizeof(int)*size);
 	char dig = 0;
 	for (int i = 0; i < size; i++) {
-		dig = tolower(num[i])-'0';
+		dig = tolower(num[i]) - '0';
 		arr[i] = dig >= 0 && dig < 10 ? dig : dig - ASCII_OFFSET;
-	}		
+	}
 	return arr;
 }
 
 int convertToBaseTen(int* num, int size, int base)
 {
 	int numBaseTen = 0;
-	for (int i = 0; i < size; i++)
-		numBaseTen += num[i] * pow(base, size-i-1);
+	for (int i = 0; i < size; i++) {
+		if (num[i] >= base)
+			return 0;
+		numBaseTen += num[i] * pow(base, size - i - 1);
+	}
 	return numBaseTen;
 }
 
 char* convertFromBaseTen(int num, int size, int base)
 {
 	char* numOutput = malloc(size);
-	int index = 0;
+	int index = size - 2;
 	char dig = 0;
-	for (int i = size-2; num!=0; i--) {
+	do {
 		dig = num % base + '0';
 		num = num / base;
-		numOutput[i] = toupper(((dig >= '0' && dig <= '9') || (dig >= 'a' && dig <= 'f')) ? dig : dig + ASCII_OFFSET);
-	}
+		numOutput[index] = toupper(((dig >= '0' && dig <= '9') || (dig >= 'a' && dig <= 'z')) ? dig : dig + ASCII_OFFSET);
+		index--;
+	} while (num != 0);
 	numOutput[size - 1] = '\0';
 	return numOutput;
 }
@@ -54,5 +58,5 @@ int* convertIntToArray(int num, int base, int size) {
 }
 
 int countDigits(int base, int num) {
-	return (int)(log(num) / log(base)) + 1;
+	return (num > 0 ? (int)(log(num) / log(base)) : 0) + 1;
 }
