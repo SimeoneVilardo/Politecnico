@@ -1,6 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="ListManager.c" />
+    <Filter Include="File di risorse">
+      <UniqueIdentifier>{9d5c3605-a366-4b70-b491-4ee4d557ad38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di origine">
+      <UniqueIdentifier>{cfe4bd62-de41-4d2a-a0be-cdffdd597161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="File di intestazione">
+      <UniqueIdentifier>{2b41e437-d903-43d4-8f58-8931d8bb8f96}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ListManager.c">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="listlib.c">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="listlib.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

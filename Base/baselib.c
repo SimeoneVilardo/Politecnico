@@ -1,16 +1,22 @@
 #include "baselib.h"
 #define ASCII_OFFSET 39
 #define DEF_BASE 10
+#define MINUS '-'
+#define MINUS_STR "-"
 
 int countDigits(int, int);
+void prepend(char*, const char*);
 
 char* convertFromBaseToBase(char* numStr, int inputBase, int outputBase)
 {
+	int minus = 0;
+	numStr = (minus = numStr[0] == MINUS) ? numStr + 1 : numStr;
 	int sizeStr = strlen(numStr);
 	int* numArr = convertStringToIntArr(numStr, sizeStr);
 	int numTen = convertToBaseTen(numArr, sizeStr, inputBase);
 	int sizNumOutputStr = countDigits(outputBase, numTen) + 1;
 	char* numOutputStr = convertFromBaseTen(numTen, sizNumOutputStr, outputBase);
+	if (minus) prepend(numOutputStr, MINUS_STR);
 	return numOutputStr;
 }
 
@@ -28,8 +34,7 @@ int convertToBaseTen(int* num, int size, int base)
 {
 	int numBaseTen = 0;
 	for (int i = 0; i < size; i++) {
-		if (num[i] >= base)
-			return 0;
+		if (num[i] >= base) return 0;
 		numBaseTen += num[i] * pow(base, size - i - 1);
 	}
 	return numBaseTen;
@@ -58,5 +63,15 @@ int* convertIntToArray(int num, int base, int size) {
 }
 
 int countDigits(int base, int num) {
-	return (num > 0 ? (int)(log(num) / log(base)) : 0) + 1;
+	return (num != 0 ? (int)(log(abs(num)) / log(base)) : 0) + 1;
+}
+
+void prepend(char* s, const char* t)
+{
+	size_t len_t = strlen(t);
+	size_t len_s = strlen(s);
+	s = realloc(s, len_s + 2 * sizeof(char));
+	memmove(s + len_t, s, len_s + 1);
+	for (size_t i = 0; i < len_t; i++)
+		s[i] = t[i];
 }
