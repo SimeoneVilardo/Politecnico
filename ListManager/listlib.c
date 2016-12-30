@@ -22,8 +22,7 @@ Node* prepend(Node* head, int value) {
 	Node* newNode = malloc(sizeof(Node));
 	newNode->value = value;
 	newNode->next = head;
-	head = newNode;
-	return head;
+	return newNode;
 }
 
 Node* insertAt(Node* head, int value, int index) {
@@ -32,7 +31,7 @@ Node* insertAt(Node* head, int value, int index) {
 	if (index >= count(head))
 		return append(head, value);
 	Node* currentNode = head;
-	for (int i = 0; i < index -1; i++)
+	for (int i = 0; i < index - 1; i++)
 		currentNode = currentNode->next;
 	Node* tempNode = currentNode->next;
 	Node* newNode = malloc(sizeof(Node));
@@ -43,6 +42,8 @@ Node* insertAt(Node* head, int value, int index) {
 }
 
 Node* shift(Node* head) {
+	if (isEmpty(head))
+		return head;
 	Node* tmpNode = head;
 	head = tmpNode->next;
 	free(tmpNode);
@@ -50,6 +51,8 @@ Node* shift(Node* head) {
 }
 
 Node* pop(Node* head) {
+	if (isEmpty(head))
+		return head;
 	Node* currentNode = head;
 	while (hasNext(currentNode->next))
 		currentNode = currentNode->next;
