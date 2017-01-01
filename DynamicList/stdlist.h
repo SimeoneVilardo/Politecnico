@@ -4,15 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct Node
-{
-	void* value;
-	struct Node* next;
-} Node;
-
+typedef struct Node { void* value; struct Node* next; } Node;
 typedef int(*fnCompare)(void*, void*);
 typedef void(*fnPrint)(Node* node);
-
 typedef enum Type { Integer, String } Type;
 
 Node* create();
@@ -25,6 +19,7 @@ void removeAt(Node** headRef, int index);
 void removeByVal(Node** headRef, void* value, fnCompare compareFunc);
 void removeByValDefault(Node** headRef, void* value, Type type);
 void* getElement(Node* head, int index);
+Node* getNode(Node* head, int index);
 int find(Node* head, void* value, fnCompare compareFunc);
 int findDefault(Node* head, void* value, Type type);
 int exists(Node* head, void* value, fnCompare compareFunc);

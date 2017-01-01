@@ -3,15 +3,18 @@
 
 typedef struct ComplexData { int id; char* name; char* description; } ComplexData;
 
-int compareComplexData(void* data1, void* data2);
-void printComplexData(Node* head);
+int compareComplexData(void*, void*);
+void printComplexData(Node*);
 void pflush();
 
 int main() {
 	int op = 0;
-	printf("**********************\n");
-	printf("**** DYNAMIC LIST ****\n");
-	printf("**********************\n");
+	printf("**********************\n**** DYNAMIC LIST ****\n**********************\n");
+	printf("ATTENZIONE!\nQuesto applicativo e' un tester per la liberia \"stdlist\".\n\"stdlist\" permette di gestire una\
+ lista che supporta come valore qualunque tipo.\nAllo scopo di testarla, sono state implementate la gestione della lista con\
+ numeri\ninteri e con una struct contenente un intero e due stringhe.\nOvviamente, l'utilizzo di alcune funzioni (che richiedono\
+ il casting di un puntatore void)\nandranno in crash nel caso in cui il tipo non coincida.\nQuesto signifa che la lista e'\
+ creata in modo tale da essere riempita da qualunque\ntipo di dato, ma tutti dello stesso tipo tra loro.");
 	Node* head = create();
 	do {
 		printf("\nMenu Principale:\n");
@@ -74,7 +77,7 @@ int main() {
 			printf("Inserire il ComplexData da rimuovere: ");
 			int idToAppend = 0;
 			printf("ID: ");
-			scanf("%d", idToAppend);
+			scanf("%d", &idToAppend);
 			ComplexData* complexDataToRemove = malloc(sizeof(ComplexData));
 			complexDataToRemove->id = idToAppend;
 			append(&head, complexDataToRemove);

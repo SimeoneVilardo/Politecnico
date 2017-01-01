@@ -126,6 +126,13 @@ void* getElement(Node* head, int index) {
 	return head->value;
 }
 
+Node* getNode(Node * head, int index)
+{
+	for (int i = 0; i < index && !isEmpty(head); i++)
+		head = head->next;
+	return head;
+}
+
 int find(Node* head, void* value, fnCompare compareFunc) {
 	int index = 0;
 	while (!isEmpty(head))
