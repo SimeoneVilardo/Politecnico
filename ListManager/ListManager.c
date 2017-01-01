@@ -16,12 +16,13 @@ int main() {
 		printf("  3) Aggiungi un elemento ad una posizione\n");
 		printf("  4) Rimuovi il primo elemento della lista\n");
 		printf("  5) Rimuovi l'ultimo elemento della lista\n");
-		printf("  6) Rimuovi un elemento dato il suo indice\n");
+		printf("  6) Rimuovi un elemento data la sua posizione\n");
 		printf("  7) Rimuovi un elemento dato il suo valore\n");
 		printf("  8) Trova la posizione di un elemento nella lista\n");
 		printf("  9) Controlla se un elemento esiste nella lista\n");
 		printf("  10) Conta gli elementi della lista\n");
-		printf("  11) Stampa gli elementi della lista\n");
+		printf("  11) Ottieni un elemento data la sua posizione\n");
+		printf("  12) Stampa gli elementi della lista\n");
 		printf("  99) Chiudi\n");
 		printf("\nNumero operazione: ");
 		scanf("%d", &op);
@@ -101,6 +102,17 @@ int main() {
 				break;
 			}
 			case 11: {
+				int indexGet = 0;
+				printf("Inserire la posizione dell'elemento da cercare: ");
+				scanf("%d", &indexGet);
+				Node* el = getElement(head, indexGet);
+				if(!isEmpty(el))
+					printf("L'elemento alla posizione %d e' %d\n", indexGet, el->value);
+				else
+					printf("Non esiste un elemento alla posizione %d\n", indexGet);
+				break;
+			}
+			case 12: {
 				printf("La lista contiene:\n");
 				print(head);
 				break;

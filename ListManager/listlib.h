@@ -17,6 +17,7 @@ Node* shift(Node* head);
 Node* pop(Node* head);
 Node* removeAt(Node* head, int index);
 Node* removeByVal(Node* head, int value);
+Node* getElement(Node* head, int index);
 int find(Node* head, int value);
 int exists(Node* head, int value);
 int count(Node* node);

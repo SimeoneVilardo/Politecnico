@@ -84,6 +84,12 @@ Node* removeByVal(Node * head, int value)
 	return removeAt(head, index);
 }
 
+Node* getElement(Node* head, int index) {
+	for (int i = 0; i < index && !isEmpty(head); i++)
+		head = head->next;
+	return head;
+}
+
 int find(Node* head, int value) {
 	int index = 0;
 	while (!isEmpty(head))
