@@ -10,6 +10,7 @@ typedef void(*fnPrint)(Node* node);
 typedef enum Type { Integer, String } Type;
 
 Node* create();
+void destroy(Node** headRef);
 void prepend(Node** headRef, void* value);
 void append(Node** headRef, void* value);
 void insertAt(Node** headRef, void* value, int index);

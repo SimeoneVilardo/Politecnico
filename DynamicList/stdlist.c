@@ -20,6 +20,14 @@ Node* create() {
 	return NULL;
 }
 
+void destroy(Node** headRef)
+{
+	int length = count(*headRef);
+	for (int i = 0; i < length; i++)
+		shift(headRef);
+	headRef = NULL;
+}
+
 void append(Node** headRef, void* value) {
 	Node* newNode = malloc(sizeof(Node));
 	newNode->value = value;
