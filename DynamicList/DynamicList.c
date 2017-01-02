@@ -8,13 +8,13 @@ void printComplexData(Node*);
 void pflush();
 
 int main() {
-	int op = 0;
 	printf("**********************\n**** DYNAMIC LIST ****\n**********************\n");
 	printf("ATTENZIONE!\nQuesto applicativo e' un tester per la liberia \"stdlist\".\n\"stdlist\" permette di gestire una\
  lista che supporta come valore qualunque tipo.\nAllo scopo di testarla, sono state implementate la gestione della lista con\
  numeri\ninteri e con una struct contenente un intero e due stringhe.\nOvviamente, l'utilizzo di alcune funzioni (che richiedono\
  il casting di un puntatore void)\nandranno in crash nel caso in cui il tipo non coincida.\nQuesto signifa che la lista e'\
  creata in modo tale da essere riempita da qualunque\ntipo di dato, ma tutti dello stesso tipo tra loro.");
+	int op = 0;
 	Node* head = create();
 	do {
 		printf("\nMenu Principale:\n");
@@ -34,7 +34,6 @@ int main() {
 		switch (op)
 		{
 		case 1:
-		{
 			printf("Inserire la posizione dell'elemento che si vuole aggiungere: ");
 			int intPosToAdd = 0;
 			scanf("%d", &intPosToAdd);
@@ -43,8 +42,7 @@ int main() {
 			scanf("%d", &intToAdd);
 			insertAt(&head, intToAdd, intPosToAdd);
 			break;
-		}
-		case 2: {
+		case 2:
 			printf("Inserire la posizione dell'elemento che si vuole aggiungere: ");
 			int complexDataPosToAdd = 0;
 			scanf("%d", &complexDataPosToAdd);
@@ -64,17 +62,14 @@ int main() {
 			complexDataToAppend->description = descToAdd;
 			insertAt(&head, complexDataToAppend, complexDataPosToAdd);
 			break;
-		}
-		case 3: {
+		case 3:
 			printf("Inserire l'intero da rimuovere: ");
 			int intToRemove = 0;
 			scanf("%d", &intToRemove);
 			removeByValDefault(&head, intToRemove, Integer);
 			break;
-		}
 		case 4:
-		{
-			printf("Inserire il ComplexData da rimuovere: ");
+			printf("Inserire il ComplexData da rimuovere:\n");
 			int idToAppend = 0;
 			printf("ID: ");
 			scanf("%d", &idToAppend);
@@ -83,18 +78,14 @@ int main() {
 			append(&head, complexDataToRemove);
 			removeByVal(&head, complexDataToRemove, compareComplexData);
 			break;
-		}
 		case 5:
-		{
 			printf("Inserire la posizione dell'elemento che si vuole cercare: ");
 			int intPosToSearch = 0;
 			scanf("%d", &intPosToSearch);
 			Node* intNode = getElement(head, intPosToSearch);
 			printf("Alla posizione %d si trova l'elemento %d", intPosToSearch, (*(int*)intNode->value));
 			break;
-		}
 		case 6:
-		{
 			printf("Inserire la posizione dell'elemento che si vuole cercare: ");
 			int complexDataPosToSearch = 0;
 			scanf("%d", &complexDataPosToSearch);
@@ -102,28 +93,21 @@ int main() {
 			ComplexData complexDataGetElement = (*(ComplexData*)complexDataNode->value);
 			printf("Alla posizione %d si trova l'elemento:\nID: %d\nNome: %s\nDescrizione: %s", complexDataPosToSearch, complexDataGetElement.id, complexDataGetElement.name, complexDataGetElement.description);
 			break;
-		}
-		case 7: {
-			int length = count(head);
-			printf("La lista contiene %d elementi", length);
+		case 7:
+			printf("La lista contiene %d elementi", count(head));
 			break;
-		}
-		case 8: {
+		case 8:
 			printDefault(head, Integer);
 			break;
-		}
-		case 9: {
+		case 9:
 			print(head, printComplexData);
 			break;
-		}
-		case 99: {
+		case 99:
 			printf("L'applicazione sara' terminata");
 			break;
-		}
-		default: {
+		default:
 			printf("Comando sconosciuto");
 			break;
-		}
 		}
 		pflush();
 		printf("\n\nPremi INVIO per continuare...");

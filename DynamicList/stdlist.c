@@ -2,28 +2,18 @@
 #define NOT_FOUND -1
 
 /********************************************************************************
-* Funzioni standard
+* Funzioni standard (dichiarazione)
 *
 * Queste sono le implementazioni standard per i tipi più comuni, ulteriori
 * implementazioni per gli stessi tipo, o nuove implementazioni per nuovi tipi
 * possono essere realizzate rispettando il prototype della funzione.
 */
 
-int compareInts(void* num1, void* num2) {
-	return *(int*)num1 == *(int*)num2;
-}
+int compareInts(void* num1, void* num2);
+int compareStrings(void* str1, void* str2);
+void printInts(Node* node);
+void printStrings(Node* node);
 
-int compareStrings(void* str1, void* str2) {
-	return strcmp((char*)str1, (char*)str2) == 0;
-}
-
-void printInts(Node* node) {
-	printf("%d  ", node->value);
-}
-
-void printStrings(Node* node) {
-	printf("%s  ", node->value);
-}
 /******************************************************************************/
 
 Node* create() {
@@ -208,3 +198,25 @@ int count(Node* head) {
 	}
 	return index;
 }
+
+/********************************************************************************
+* Funzioni standard (implementazione)
+*/
+
+int compareInts(void* num1, void* num2) {
+	return *(int*)num1 == *(int*)num2;
+}
+
+int compareStrings(void* str1, void* str2) {
+	return strcmp((char*)str1, (char*)str2) == 0;
+}
+
+void printInts(Node* node) {
+	printf("%d  ", node->value);
+}
+
+void printStrings(Node* node) {
+	printf("%s  ", node->value);
+}
+
+/******************************************************************************/
