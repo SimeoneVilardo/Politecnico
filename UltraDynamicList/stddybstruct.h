@@ -47,13 +47,17 @@ typedef struct DynStructVar {
 	char* name;
 	union {
 		long integer;
-		long double decimal;
+		double decimal;
 		DynStructString* str;
 		DynStruct* ptr;
 	} data;
+	int primaryKey;
 } DynStructVar;
 
 DynStruct* createDynamicStruct();
-DynStruct* createDynamicStructElement(DynStruct* dynStruct);
+DynStruct* createDynamicStructInstance(DynStruct*, int);
+DynStruct* createDynamicStructElement(DynStruct*);
+DynStruct* createDynamicStructSearchModel(DynStruct*);
 DynStructFieldType getType(int);
+int hasPrimaryKey(DynStruct*);
 #endif

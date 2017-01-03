@@ -31,7 +31,7 @@ int main() {
 		printf("  11) Stampa gli elementi della lista\n");
 		printf("  99) Chiudi\n");
 		printf("\nNumero operazione: ");
-		scanf("%d", &op);
+		cscanf("%d", &op);
 		printf("\n");
 		switch (op)
 		{
@@ -50,7 +50,7 @@ int main() {
 			DynStruct* elToInsert = createDynamicStructElement(dynStruct);
 			printf("Inserire la posizione dove si vuole aggiungere il valore: ");
 			int indexInsert = 0;
-			scanf("%d", &indexInsert);
+			cscanf("%d", &indexInsert);
 			insertAt(&head, elToInsert, indexInsert);
 			break;
 		case 4:
@@ -62,12 +62,12 @@ int main() {
 		case 6:
 			printf("Inserire la posizione dell'elemento che si vuole rimuovere: ");
 			int indexRemove = 0;
-			scanf("%d", &indexRemove);
+			cscanf("%d", &indexRemove);
 			removeAt(&head, indexRemove);
 			break;
 		case 7:
 			printf("Inserire il valore dell'elemento da eliminare\n");
-			DynStruct* elToRemove = createDynamicStructElement(dynStruct);
+			DynStruct* elToRemove = createDynamicStructSearchModel(dynStruct);
 			removeByVal(&head, elToRemove, compareDynamicStruct);
 			break;
 		case 8:
@@ -95,7 +95,6 @@ int main() {
 			printf("Comando sconosciuto");
 			break;
 		}
-		pflush();
 		printf("\n\nPremi INVIO per continuare...");
 		getchar();
 	} while (op != 99);
@@ -105,9 +104,12 @@ int main() {
 int compareDynamicStruct(void* a, void* b) {
 	DynStruct* dynStructA = (DynStruct*)a;
 	DynStruct* dynStructB = (DynStruct*)b;
+	int checkPK = hasPrimaryKey(dynStructA) && hasPrimaryKey(dynStructB);
 	if (dynStructA->length != dynStructB->length)
 		return 0;
 	for (int i = 0; i < dynStructA->length; i++) {
+		if (checkPK && (!dynStructA->array[i].primaryKey || !dynStructB->array[i].primaryKey))
+			continue;
 		if (dynStructA->array[i].type.id != dynStructB->array[i].type.id)
 			return 0;
 		switch (dynStructA->array[i].type.id)
@@ -150,25 +152,46 @@ void printDynamicStructField(DynStruct* dynStruct) {
 		switch (dynStruct->array[i].type.id)
 		{
 		case T_CHAR:
+			printf("%s: %c\n", dynStruct->array[i].name, (char)dynStruct->array[i].data.integer);
+			break;
 		case T_U_CHAR:
+			printf("%s: %c\n", dynStruct->array[i].name, (unsigned char)dynStruct->array[i].data.integer);
+			break;
 		case T_S_CHAR:
+			printf("%s: %c\n", dynStruct->array[i].name, (signed char)dynStruct->array[i].data.integer);
+			break;
 		case T_INT:
+			printf("%s: %d\n", dynStruct->array[i].name, (int)dynStruct->array[i].data.integer);
+			break;
 		case T_U_INT:
+			printf("%s: %u\n", dynStruct->array[i].name, (unsigned int)dynStruct->array[i].data.integer);
+			break;
 		case T_SHORT:
+			printf("%s: %d\n", dynStruct->array[i].name, (short)dynStruct->array[i].data.integer);
+			break;
 		case T_U_SHORT:
+			printf("%s: %u\n", dynStruct->array[i].name, (unsigned short)dynStruct->array[i].data.integer);
+			break;
 		case T_LONG:
+			printf("%s: %ld\n", dynStruct->array[i].name, (long)dynStruct->array[i].data.integer);
+			break;
 		case T_U_LONG:
-			printf("%s: %d\n", dynStruct->array[i].name, dynStruct->array[i].data.integer);
+			printf("%s: %lu\n", dynStruct->array[i].name, (unsigned  long)dynStruct->array[i].data.integer);
 			break;
 		case T_FLOAT:
+			printf("%s: %f\n", dynStruct->array[i].name, (float)dynStruct->array[i].data.decimal);
+			break;
 		case T_DOUBLE:
+			printf("%s: %lf\n", dynStruct->array[i].name, (double)dynStruct->array[i].data.decimal);
+			break;
 		case T_L_DOUBLE:
-			printf("%s: %f\n", dynStruct->array[i].name, dynStruct->array[i].data.decimal);
+			printf("%s: %Lf\n", dynStruct->array[i].name, (long double)dynStruct->array[i].data.decimal);
 			break;
 		case T_STRING:
 			printf("%s: %s\n", dynStruct->array[i].name, dynStruct->array[i].data.str->value);
 			break;
 		case T_STRUCT:
+			printf("%s:\n", dynStruct->array[i].name);
 			printDynamicStructField(dynStruct->array[i].data.ptr);
 			break;
 		default:

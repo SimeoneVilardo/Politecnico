@@ -88,14 +88,16 @@ void pop(Node** headRef) {
 void removeAt(Node** headRef, int index) {
 	if (index == 0)
 		shift(headRef);
-	if (index >= count(*headRef))
+	else if (index >= count(*headRef))
 		pop(headRef);
-	Node* currentNode = *headRef;
-	for (int i = 0; i < index - 1; i++)
-		currentNode = currentNode->next;
-	Node* tmpNode = currentNode->next;
-	currentNode->next = currentNode->next->next;
-	free(tmpNode);
+	else {
+		Node* currentNode = *headRef;
+		for (int i = 0; i < index - 1; i++)
+			currentNode = currentNode->next;
+		Node* tmpNode = currentNode->next;
+		currentNode->next = currentNode->next->next;
+		free(tmpNode);
+	}
 }
 
 void removeByVal(Node** headRef, void* value, fnCompare compareFunc)
