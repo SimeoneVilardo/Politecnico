@@ -103,6 +103,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListManager2", "ListManager
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicList", "DynamicList\DynamicList.vcxproj", "{748C5D1F-FCE9-413A-9814-0CE08BC93C5E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UltraDynamicList", "UltraDynamicList\UltraDynamicList.vcxproj", "{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -511,6 +513,14 @@ Global
 		{748C5D1F-FCE9-413A-9814-0CE08BC93C5E}.Release|x64.Build.0 = Release|x64
 		{748C5D1F-FCE9-413A-9814-0CE08BC93C5E}.Release|x86.ActiveCfg = Release|Win32
 		{748C5D1F-FCE9-413A-9814-0CE08BC93C5E}.Release|x86.Build.0 = Release|Win32
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Debug|x64.ActiveCfg = Debug|x64
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Debug|x64.Build.0 = Debug|x64
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Debug|x86.ActiveCfg = Debug|Win32
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Debug|x86.Build.0 = Debug|Win32
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Release|x64.ActiveCfg = Release|x64
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Release|x64.Build.0 = Release|x64
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Release|x86.ActiveCfg = Release|Win32
+		{CBE1F7F7-8167-4EBF-AA1D-CBE0FAB02204}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

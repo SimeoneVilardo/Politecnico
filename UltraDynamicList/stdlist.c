@@ -105,7 +105,7 @@ void removeByVal(Node** headRef, void* value, fnCompare compareFunc)
 		removeAt(headRef, index);
 }
 
-void removeByValDefault(Node** headRef, void* value, FieldType type)
+void removeByValDefault(Node** headRef, void* value, NodeValueType type)
 {
 	switch (type)
 	{
@@ -143,7 +143,7 @@ int find(Node* head, void* value, fnCompare compareFunc) {
 	return NOT_FOUND;
 }
 
-int findDefault(Node* head, void* value, FieldType type)
+int findDefault(Node* head, void* value, NodeValueType type)
 {
 	switch (type)
 	{
@@ -158,7 +158,7 @@ int exists(Node* head, void* value, fnCompare compareFunc) {
 	return find(head, value, compareFunc) != NOT_FOUND;
 }
 
-int existsDefault(Node* head, void* value, FieldType type) {
+int existsDefault(Node* head, void* value, NodeValueType type) {
 	switch (type)
 	{
 	case Integer:
@@ -176,7 +176,7 @@ void print(Node* head, fnPrint printFunc) {
 	}
 }
 
-void printDefault(Node* head, FieldType type)
+void printDefault(Node* head, NodeValueType type)
 {
 	switch (type)
 	{
