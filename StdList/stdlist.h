@@ -33,5 +33,5 @@ int count(Node* node);
 int isEmpty(Node* head);
 int hasNext(Node* node);
 void printList(Node* head, fnPrint printFunc);
-void printDefault(Node* head, NodeValueType type);
+void printListDefault(Node* head, NodeValueType type);
 #endif

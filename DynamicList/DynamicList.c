@@ -75,7 +75,7 @@ void intergerListMenu(int* op) {
 		printf("Inserire l'intero da rimuovere: ");
 		int intToRemove = 0;
 		scanf("%d", &intToRemove);
-		removeByValDefault(&head, intToRemove, Integer);
+		removeAllByValDefault(&head, intToRemove, Integer);
 		break;
 	case 3:
 		printf("Inserire la posizione dell'elemento che si vuole cercare: ");
@@ -88,7 +88,7 @@ void intergerListMenu(int* op) {
 		printf("La lista contiene %d elementi", count(head));
 		break;
 	case 5:
-		printDefault(head, Integer);
+		printListDefault(head, Integer);
 		break;
 	case BACK_CODE:
 		destroy(&head);
@@ -147,7 +147,7 @@ void complexDataListMenu(int* op) {
 		ComplexData* complexDataToRemove = malloc(sizeof(ComplexData));
 		complexDataToRemove->id = idToAppend;
 		append(&head, complexDataToRemove);
-		removeByVal(&head, complexDataToRemove, compareComplexData);
+		removeAllByVal(&head, complexDataToRemove, compareComplexData);
 		break;
 	case 3:
 		printf("Inserire la posizione dell'elemento che si vuole cercare: ");
@@ -161,7 +161,7 @@ void complexDataListMenu(int* op) {
 		printf("La lista contiene %d elementi", count(head));
 		break;
 	case 5:
-		print(head, printComplexData);
+		printList(head, printComplexData);
 		break;
 	case BACK_CODE:
 		destroy(&head);

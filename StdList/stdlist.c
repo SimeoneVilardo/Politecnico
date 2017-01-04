@@ -202,7 +202,7 @@ void printList(Node* head, fnPrint printFunc) {
 	}
 }
 
-void printDefault(Node* head, NodeValueType type)
+void printListDefault(Node* head, NodeValueType type)
 {
 	switch (type)
 	{
