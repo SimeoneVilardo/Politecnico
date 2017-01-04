@@ -148,7 +148,7 @@
     <ClCompile Include="UltraDynamicList.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stddybstruct.h" />
+    <ClInclude Include="stddynstruct.h" />
     <ClInclude Include="stdlist.h" />
     <ClInclude Include="stdutils.h" />
   </ItemGroup>

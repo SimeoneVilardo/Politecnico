@@ -45,9 +45,9 @@ typedef struct _DynStructString {
 typedef struct DynStructVar {
 	DynStructFieldType type;
 	char* name;
-	union {
+	union _Data {
 		long integer;
-		double decimal;
+		long double decimal;
 		DynStructString* str;
 		DynStruct* ptr;
 	} data;
@@ -58,6 +58,8 @@ DynStruct* createDynamicStruct();
 DynStruct* createDynamicStructInstance(DynStruct*, int);
 DynStruct* createDynamicStructElement(DynStruct*);
 DynStruct* createDynamicStructSearchModel(DynStruct*);
+int isEquals(void*, void*);
+void printDynamicStruct(DynStruct*);
 DynStructFieldType getType(int);
 int hasPrimaryKey(DynStruct*);
 #endif

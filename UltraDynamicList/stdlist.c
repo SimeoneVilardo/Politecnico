@@ -100,22 +100,46 @@ void removeAt(Node** headRef, int index) {
 	}
 }
 
-void removeByVal(Node** headRef, void* value, fnCompare compareFunc)
+void removeByVal(Node** headRef, void* value, fnCompare compareFunc, int all)
 {
-	int index = find(*headRef, value, compareFunc);
-	if (index != NOT_FOUND)
-		removeAt(headRef, index);
+	int index;
+	if (all) 
+		while ((index = find(*headRef, value, compareFunc)) != NOT_FOUND)
+			removeAt(headRef, index);
+	else
+		if (index = find(*headRef, value, compareFunc) != NOT_FOUND)
+			removeAt(headRef, index);	
 }
 
-void removeByValDefault(Node** headRef, void* value, NodeValueType type)
+void removeSingleByVal(Node** headRef, void* value, fnCompare compareFunc)
+{
+	removeByVal(headRef, value, compareFunc, 0);
+}
+
+void removeAllByVal(Node** headRef, void* value, fnCompare compareFunc)
+{
+	removeByVal(headRef, value, compareFunc, 1);
+}
+
+void removeAllByValDefault(Node** headRef, void* value, NodeValueType type)
+{
+	removeByValDefault(headRef, value, type, 1);
+}
+
+void removeSingleByValDefault(Node** headRef, void* value, NodeValueType type)
+{
+	removeByValDefault(headRef, value, type, 0);
+}
+
+void removeByValDefault(Node** headRef, void* value, NodeValueType type, int all)
 {
 	switch (type)
 	{
 	case Integer:
-		removeByVal(headRef, value, compareInts);
+		removeByVal(headRef, value, compareInts, all);
 		break;
 	case String:
-		removeByVal(headRef, value, compareStrings);
+		removeByVal(headRef, value, compareStrings, all);
 		break;
 	}
 }

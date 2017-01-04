@@ -28,10 +28,10 @@
     <ClInclude Include="stdlist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stddybstruct.h">
+    <ClInclude Include="stdutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stdutils.h">
+    <ClInclude Include="stddynstruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
