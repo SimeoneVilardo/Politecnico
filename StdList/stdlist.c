@@ -103,12 +103,12 @@ void removeAt(Node** headRef, int index) {
 void removeByVal(Node** headRef, void* value, fnCompare compareFunc, int all)
 {
 	int index;
-	if (all) 
+	if (all)
 		while ((index = find(*headRef, value, compareFunc)) != NOT_FOUND)
 			removeAt(headRef, index);
 	else
 		if (index = find(*headRef, value, compareFunc) != NOT_FOUND)
-			removeAt(headRef, index);	
+			removeAt(headRef, index);
 }
 
 void removeSingleByVal(Node** headRef, void* value, fnCompare compareFunc)
@@ -194,7 +194,7 @@ int existsDefault(Node* head, void* value, NodeValueType type) {
 	}
 }
 
-void print(Node* head, fnPrint printFunc) {
+void printList(Node* head, fnPrint printFunc) {
 	while (!isEmpty(head))
 	{
 		printFunc(head);
@@ -207,10 +207,10 @@ void printDefault(Node* head, NodeValueType type)
 	switch (type)
 	{
 	case Integer:
-		print(head, printInts);
+		printList(head, printInts);
 		break;
 	case String:
-		print(head, printStrings);
+		printList(head, printStrings);
 		break;
 	}
 }

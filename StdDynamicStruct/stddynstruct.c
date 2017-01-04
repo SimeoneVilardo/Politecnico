@@ -56,7 +56,7 @@ DynStruct* createDynamicStructInstance(DynStruct* dynStruct, int searchModel) {
 		case T_S_CHAR:
 		case T_INT:
 		case T_SHORT:
-		case T_LONG:	
+		case T_LONG:
 			cscanf("%d", &newDynStruct->array[i].data.integer);
 			break;
 		case T_FLOAT:
@@ -102,7 +102,7 @@ DynStruct* createDynamicStruct() {
 		cscanf("%s", dynStruct->array[i].name);
 		dynStruct->array[i].type = getType(fieldType);
 		if (dynStruct->array[i].type.id == T_STRING) {
-			printf("Definire la grandezza della stringa: ");		
+			printf("Definire la grandezza della stringa: ");
 			dynStruct->array[i].data.str = calloc(1, sizeof(DynStructString));
 			cscanf("%d", &dynStruct->array[i].data.str->length);
 			dynStruct->array[i].data.str->value = calloc(dynStruct->array[i].data.str->length, sizeof(char));
@@ -168,40 +168,40 @@ void printDynamicStruct(DynStruct* dynStruct) {
 		switch (dynStruct->array[i].type.id)
 		{
 		case T_CHAR:
-			printf("%s: %c\n", dynStruct->array[i].name, (char) dynStruct->array[i].data.integer);
+			printf("%s: %c\n", dynStruct->array[i].name, (char)dynStruct->array[i].data.integer);
 			break;
 		case T_U_CHAR:
-			printf("%s: %u\n", dynStruct->array[i].name, (unsigned char) dynStruct->array[i].data.integer);
+			printf("%s: %u\n", dynStruct->array[i].name, (unsigned char)dynStruct->array[i].data.integer);
 			break;
 		case T_S_CHAR:
-			printf("%s: %c\n", dynStruct->array[i].name, (signed char) dynStruct->array[i].data.integer);
+			printf("%s: %c\n", dynStruct->array[i].name, (signed char)dynStruct->array[i].data.integer);
 			break;
 		case T_INT:
-			printf("%s: %d\n", dynStruct->array[i].name, (int) dynStruct->array[i].data.integer);
+			printf("%s: %d\n", dynStruct->array[i].name, (int)dynStruct->array[i].data.integer);
 			break;
 		case T_U_INT:
-			printf("%s: %u\n", dynStruct->array[i].name, (unsigned int) dynStruct->array[i].data.integer);
+			printf("%s: %u\n", dynStruct->array[i].name, (unsigned int)dynStruct->array[i].data.integer);
 			break;
 		case T_SHORT:
-			printf("%s: %d\n", dynStruct->array[i].name, (short) dynStruct->array[i].data.integer);
+			printf("%s: %d\n", dynStruct->array[i].name, (short)dynStruct->array[i].data.integer);
 			break;
 		case T_U_SHORT:
-			printf("%s: %u\n", dynStruct->array[i].name, (unsigned short) dynStruct->array[i].data.integer);
+			printf("%s: %u\n", dynStruct->array[i].name, (unsigned short)dynStruct->array[i].data.integer);
 			break;
 		case T_LONG:
-			printf("%s: %ld\n", dynStruct->array[i].name, (long) dynStruct->array[i].data.integer);
+			printf("%s: %ld\n", dynStruct->array[i].name, (long)dynStruct->array[i].data.integer);
 			break;
 		case T_U_LONG:
-			printf("%s: %lu\n", dynStruct->array[i].name, (unsigned long) dynStruct->array[i].data.integer);
+			printf("%s: %lu\n", dynStruct->array[i].name, (unsigned long)dynStruct->array[i].data.integer);
 			break;
 		case T_FLOAT:
-			printf("%s: %f\n", dynStruct->array[i].name, (float) dynStruct->array[i].data.decimal);
+			printf("%s: %f\n", dynStruct->array[i].name, (float)dynStruct->array[i].data.decimal);
 			break;
 		case T_DOUBLE:
-			printf("%s: %lf\n", dynStruct->array[i].name, (double) dynStruct->array[i].data.decimal);
+			printf("%s: %lf\n", dynStruct->array[i].name, (double)dynStruct->array[i].data.decimal);
 			break;
 		case T_L_DOUBLE:
-			printf("%s: %Lf\n", dynStruct->array[i].name, (long double) dynStruct->array[i].data.decimal);
+			printf("%s: %Lf\n", dynStruct->array[i].name, (long double)dynStruct->array[i].data.decimal);
 			break;
 		case T_STRING:
 			printf("%s: %s\n", dynStruct->array[i].name, dynStruct->array[i].data.str->value);

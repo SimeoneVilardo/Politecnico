@@ -32,6 +32,6 @@ int existsDefault(Node* head, void* value, NodeValueType type);
 int count(Node* node);
 int isEmpty(Node* head);
 int hasNext(Node* node);
-void print(Node* head, fnPrint printFunc);
+void printList(Node* head, fnPrint printFunc);
 void printDefault(Node* head, NodeValueType type);
 #endif

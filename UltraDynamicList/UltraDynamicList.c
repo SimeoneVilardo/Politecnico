@@ -84,7 +84,7 @@ int main() {
 			break;
 		case 11:
 			printf("La lista contiene:\n");
-			print(head, printDynamicStructList);
+			printList(head, printDynamicStructList);
 			break;
 		case 99:
 			printf("L'applicazione sara' terminata");
