@@ -1,4 +1,5 @@
 #include "stdutils.h"
+#define ALLOW_WHITESPACE "[^\n]"
 
 void pflush() {
 	char c;
@@ -12,6 +13,7 @@ int cscanf(const char *format, ...)
 	va_start(ap, format);
 	count = vfscanf(stdin, format, ap);
 	va_end(ap);
-	pflush();
+	if (strstr(format, ALLOW_WHITESPACE) == NULL)
+		getchar();
 	return count;
 }
