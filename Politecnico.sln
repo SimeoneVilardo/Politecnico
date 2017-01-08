@@ -113,6 +113,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StdUtils", "StdUtils\StdUti
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Polibio", "Polibio\Polibio.vcxproj", "{E3D69C36-445C-4BAA-93C5-F88CACE9AAA2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixCalculator", "MatrixCalculator\MatrixCalculator.vcxproj", "{64435F6A-B79F-4047-A1AD-0396DA557148}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -561,6 +563,14 @@ Global
 		{E3D69C36-445C-4BAA-93C5-F88CACE9AAA2}.Release|x64.Build.0 = Release|x64
 		{E3D69C36-445C-4BAA-93C5-F88CACE9AAA2}.Release|x86.ActiveCfg = Release|Win32
 		{E3D69C36-445C-4BAA-93C5-F88CACE9AAA2}.Release|x86.Build.0 = Release|Win32
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Debug|x64.ActiveCfg = Debug|x64
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Debug|x64.Build.0 = Debug|x64
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Debug|x86.ActiveCfg = Debug|Win32
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Debug|x86.Build.0 = Debug|Win32
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Release|x64.ActiveCfg = Release|x64
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Release|x64.Build.0 = Release|x64
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Release|x86.ActiveCfg = Release|Win32
+		{64435F6A-B79F-4047-A1AD-0396DA557148}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
