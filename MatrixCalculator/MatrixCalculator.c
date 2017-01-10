@@ -76,7 +76,7 @@ float** inverse(float** matrix, int size) {
 
 float cofactor(float** matrix, int size, int rIndex, int cIndex) {
 	float** subMatrix = getSubMatrix(matrix, size, rIndex, cIndex);
-	int cofactor = (rIndex + cIndex % 2 ? -1 : 1) * determinant(subMatrix, size - 1, size - 1);
+	int cofactor = ((rIndex + cIndex) % 2 ? -1 : 1) * determinant(subMatrix, size - 1, size - 1);
 	destroyMatrix(subMatrix, size-1);
 	return cofactor;
 }
