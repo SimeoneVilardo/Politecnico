@@ -14,21 +14,25 @@ void exponentiation();
 void palindrome();
 void findInArray();
 void findLargestInArray();
+void findLargestInArray2();
 void reverseString();
 void findCapitalInString();
 void sumMatrix();
 void findLargestSubMatrixInMatrix();
 void reverseBubbleSort();
+void countPeaks();
 int factLogic(int num);
 int expLogic(int base, int exponent);
 int palLogic(char str[], int start, int end);
 int findInArrayLogic(int* arr, int len, int el, int index);
 int findLarInArrLogic(int* arr, int len, int largest, int index);
+int findLarInArrLogic2(int* arr, int len);
 void reverseStrLogic(char* str, int len, int index);
 char findCapInStrLogic(char* str, int len, int index, int capital);
 int sumMatrixLogic(int** matrix, int rows, int cols, int rIndex, int cIndex);
 MatrixID findLarSubMatrixInMatrixLogic(int** matrix, int rows, int cols, int sRows, int sCols, int rIndex, int cIndex, int smrIndex, int smcIndex, int oldSum, int newSum, MatrixID matrixId);
 void reverseBubbleSortLogic(int* arr, int len, int arrIndex, int bsIndex);
+int countPeaksLogic(int* arr, int len, int index);
 
 int main() {
 	int op = 0;
@@ -40,11 +44,13 @@ int main() {
 		printf("  3) Controlla se una parola e' palindroma\n");
 		printf("  4) Trova elemento in un array\n");
 		printf("  5) Trova l'elemento piu' grande in un array\n");
-		printf("  6) Inverti una stringa\n");
-		printf("  7) Trova la prima lettera maiuscola in una stringa\n");
-		printf("  8) Somma gli elementi di una matrice\n");
-		printf("  9) Trova la sottomatrice massima in una matrice\n");
-		printf("  10) Ordina un array in ordine decrescente\n");
+		printf("  6) Trova l'elemento piu' grande in un array (metodo alternativo)\n");
+		printf("  7) Inverti una stringa\n");
+		printf("  8) Trova la prima lettera maiuscola in una stringa\n");
+		printf("  9) Somma gli elementi di una matrice\n");
+		printf("  10) Trova la sottomatrice massima in una matrice\n");
+		printf("  11) Ordina un array in ordine decrescente\n");
+		printf("  12) Trova il numero di vette in un array\n");
 		printf("  99) Chiudi\n");
 		printf("\nNumero operazione: ");
 		scanf("%d", &op);
@@ -67,19 +73,25 @@ int main() {
 			findLargestInArray();
 			break;
 		case 6:
-			reverseString();
+			findLargestInArray2();
 			break;
 		case 7:
-			findCapitalInString();
+			reverseString();
 			break;
 		case 8:
-			sumMatrix();
+			findCapitalInString();
 			break;
 		case 9:
-			findLargestSubMatrixInMatrix();
+			sumMatrix();
 			break;
 		case 10:
+			findLargestSubMatrixInMatrix();
+			break;
+		case 11:
 			reverseBubbleSort();
+			break;
+		case 12:
+			countPeaks();
 			break;
 		case 99:
 			printf("L'applicazione sara' terminata");
@@ -107,6 +119,26 @@ void reverseBubbleSort() {
 	printf("\nL'array ordinato e':\n");
 	for (int i = 0; i < len; i++)
 		printf("%d ", arr[i]);
+}
+
+void countPeaks() {
+	int len = 0;
+	printf("Inserisci la lunghezza dell'array: ");
+	scanf("%d", &len);
+	int* arr = createRandomArray(len);
+	printf("L'array generato e':\n");
+	for (int i = 0; i < len; i++)
+		printf("%d ", arr[i]);
+	int peaks = countPeaksLogic(arr, len, 0);
+	printf("\nIl numero di vette e': %d\n", peaks);
+}
+
+int countPeaksLogic(int* arr, int len, int index) {
+	if (len <= 1)
+		return 0;
+	if (index >= len)
+		return 1 + countPeaksLogic(&arr[1], len - 1, 0);
+	return arr[0] >= arr[index] ? countPeaksLogic(arr, len, index + 1) : countPeaksLogic(&arr[1], len - 1, 0);
 }
 
 void reverseBubbleSortLogic(int* arr, int len, int arrIndex, int bsIndex) {
@@ -163,7 +195,7 @@ MatrixID findLarSubMatrixInMatrixLogic(int** matrix, int rows, int cols, int sRo
 		cIndex = 0;
 		rIndex = 0;
 	}
-	if (smcIndex - 1== cols - sCols) {
+	if (smcIndex - 1 == cols - sCols) {
 		smcIndex = 0;
 		smrIndex = smrIndex + 1;
 	}
@@ -247,6 +279,18 @@ void findLargestInArray() {
 	printf("\nL'elemento piu' grande nell'array e': %d", largest);
 }
 
+void findLargestInArray2() {
+	int len = 0;
+	printf("Inserisci la lunghezza dell'array: ");
+	scanf("%d", &len);
+	int* arr = createRandomArray(len);
+	printf("L'array generato e':\n");
+	for (int i = 0; i < len; i++)
+		printf("%d ", arr[i]);
+	int largest = findLarInArrLogic2(arr, len);
+	printf("\nL'elemento piu' grande nell'array e': %d", largest);
+}
+
 //int findLarInArrLogic(int* arr, int len, int largest, int index) {
 //	return index >= len - 1 ? largest : findLarInArrLogic(arr, len, (largest > arr[index] ? largest : arr[index]), index + 1);
 //}
@@ -268,6 +312,11 @@ int findLarInArrLogic(int* arr, int len, int largest, int index) {
 		}
 		return findLarInArrLogic(arr, len, tmpLargest, index + 1);
 	}
+}
+
+int findLarInArrLogic2(int* arr, int len) {
+	if (len == 1) return arr[0];
+	return arr[len - 1] > findLarInArrLogic2(arr, len - 1) ? arr[len - 1] : findLarInArrLogic2(arr, len - 1);
 }
 
 void findInArray() {
