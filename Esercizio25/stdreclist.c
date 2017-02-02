@@ -68,14 +68,45 @@ Node* removeAt(Node* head, int pos) {
 	}
 }
 
-int find(Node* head, int id)
+Node* getNode(Node* head, int id)
 {
 	if (isEmpty(head))
-		return 0;
+		return NULL;
 	if (head->value.id == id)
-		return 1;
-	return 1 + find(head->next, id);
+		return head;
+	return getNode(head->next, id);
 }
+
+Node* depart(Node* head, int id, Time actualDep) {
+	Node* node = getNode(head, id);
+	node->value.actualDep = actualDep;
+	return head;
+}
+
+void printLargeFlights(Node* head) {
+	if (isEmpty(head))
+		return;
+	if (head->value.passenger >= PASSENGER_LARGE_FLIGHT)
+		printf("\nID: %d\nDestinazione: %s\nOrario partenza previsto: %02d:%02d\nOrario partenza effettivo: %02d:%02d\nNumero passeggeri: %d\n", head->value.id, head->value.dest, head->value.scheduledDep.hours, head->value.scheduledDep.minutes, head->value.actualDep.hours, head->value.actualDep.minutes, head->value.passenger);
+	return printLargeFlights(head->next);
+}
+
+void printSmallDelay(Node* head) {
+	if (isEmpty(head))
+		return;
+	if (((head->value.actualDep.hours - head->value.scheduledDep.hours) > 0) || ((head->value.actualDep.minutes - head->value.scheduledDep.minutes) > SMALL_DELAY))
+		printf("\nID: %d\nDestinazione: %s\nOrario partenza previsto: %02d:%02d\nOrario partenza effettivo: %02d:%02d\nNumero passeggeri: %d\n", head->value.id, head->value.dest, head->value.scheduledDep.hours, head->value.scheduledDep.minutes, head->value.actualDep.hours, head->value.actualDep.minutes, head->value.passenger);
+	return printSmallDelay(head->next);
+}
+
+void printBigDelay(Node* head) {
+	if (isEmpty(head))
+		return;
+	if (((head->value.actualDep.hours - head->value.scheduledDep.hours) > 0) || ((head->value.actualDep.minutes - head->value.scheduledDep.minutes) > BIG_DELAY))
+		printf("\nID: %d\nDestinazione: %s\nOrario partenza previsto: %02d:%02d\nOrario partenza effettivo: %02d:%02d\nNumero passeggeri: %d\n", head->value.id, head->value.dest, head->value.scheduledDep.hours, head->value.scheduledDep.minutes, head->value.actualDep.hours, head->value.actualDep.minutes, head->value.passenger);
+	return printBigDelay(head->next);
+}
+
 
 int exists(Node* head, int id)
 {

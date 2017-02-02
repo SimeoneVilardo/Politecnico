@@ -2,6 +2,9 @@
 #define STDRECLIST
 #define DEST_LEN 3
 #define STR_DEST_LEN (DEST_LEN + 1)
+#define PASSENGER_LARGE_FLIGHT 200
+#define SMALL_DELAY 5
+#define BIG_DELAY 30
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +37,10 @@ Node* pop(Node* head);
 Node* removeAt(Node* head, int pos);
 int isEmpty(Node* node);
 int hasNext(Node* node);
-int find(Node* head, int id);
+Node* getNode(Node* head, int id);
+void printLargeFlights(Node* head);
+void printSmallDelay(Node* head);
+void printBigDelay(Node* head);
 int exists(Node* head, int id);
 int count(Node* head);
 void print(Node* head);
