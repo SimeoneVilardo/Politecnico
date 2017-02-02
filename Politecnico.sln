@@ -121,6 +121,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Esercizio24", "Esercizio24\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RecursiveListManager", "RecursiveListManager\RecursiveListManager.vcxproj", "{412A9C51-D6DF-42A8-A74F-9C9FBF2E979A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Esercizio25", "Esercizio25\Esercizio25.vcxproj", "{D5D2F67D-910B-45EB-BFCB-65FF17616384}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -717,6 +719,16 @@ Global
 		{412A9C51-D6DF-42A8-A74F-9C9FBF2E979A}.Release|x64.Build.0 = Release|x64
 		{412A9C51-D6DF-42A8-A74F-9C9FBF2E979A}.Release|x86.ActiveCfg = Release|Win32
 		{412A9C51-D6DF-42A8-A74F-9C9FBF2E979A}.Release|x86.Build.0 = Release|Win32
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Debug|x64.ActiveCfg = Debug|x64
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Debug|x64.Build.0 = Debug|x64
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Debug|x86.ActiveCfg = Debug|Win32
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Debug|x86.Build.0 = Debug|Win32
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Release|Any CPU.ActiveCfg = Release|Win32
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Release|x64.ActiveCfg = Release|x64
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Release|x64.Build.0 = Release|x64
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Release|x86.ActiveCfg = Release|Win32
+		{D5D2F67D-910B-45EB-BFCB-65FF17616384}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
