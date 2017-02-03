@@ -37,6 +37,14 @@ Node* insertAt(Node* head, int value, int pos) {
 	}
 }
 
+Node* insertOrdered(Node * head, int value)
+{
+	if (isEmpty(head) || head->value > value)
+		return prepend(head, value);
+	head->next = insertOrdered(head->next, value);
+	return head;
+}
+
 Node* shift(Node* head) {
 	if (isEmpty(head))
 		return NULL;

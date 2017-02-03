@@ -3,40 +3,45 @@
 #include <string.h>
 #include "stdreclist.h"
 #define DEFAULT_PATH "..\\Esercizio27\\Numbers.txt"
+#define SUCCESS_EXIT_CODE 0
+#define USAGE_ERROR_EXIT_CODE 1
+#define FILE_ERROR_EXIT_CODE 2
 
 int isPts(char*);
 int isPrime(int);
 int removeLastChar(char*);
+Node* populateList(Node*, FILE*);
 
 int main(int argc, char* argv[]) {
 	if (argc != 2) {
 		printf("Usage: Esercizio27.exe [path]");
-		return 1;
+		return USAGE_ERROR_EXIT_CODE;
 	}
 	Node* head = create();
 	FILE* file = fopen(argv[1], "r");
 	if (!file) {
 		printf("Impossibile aprire il file %s", argv[1]);
-		return 2;
+		return FILE_ERROR_EXIT_CODE;
 	}
+	head = populateList(head, file);
+	print(head);
+	return SUCCESS_EXIT_CODE;
+}
+
+Node* populateList(Node* head, FILE* file) {
 	char* strNum = malloc(sizeof(char) * 128);
-	while (!feof(file) && (fscanf(file, "%s", strNum) != EOF)){
+	while (!feof(file) && (fscanf(file, "%s", strNum) != EOF)) {
 		int num = atoi(strNum);
 		if (isPts(strNum))
-			head = append(head, num);
+			head = insertOrdered(head, num);
 	}
-	print(head);
-	return 0;
+	return head;
 }
 
 int isPts(char* strNum) {
-	int prime = 1;
 	int end = 0;
-	while (prime && !end)
-	{
-		prime = isPrime(atoi(strNum));
+	while (isPrime(atoi(strNum)) && !end)
 		end = !removeLastChar(strNum);
-	}
 	return end;
 }
 

@@ -14,6 +14,7 @@ Node* create();
 Node* prepend(Node* head, int value);
 Node* append(Node* head, int value);
 Node* insertAt(Node* head, int value, int pos);
+Node* insertOrdered(Node* head, int value);
 Node* shift(Node* head);
 Node* pop(Node* head);
 Node* removeAt(Node* head, int pos);
