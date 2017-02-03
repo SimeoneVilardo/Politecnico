@@ -30,11 +30,9 @@ int main(int argc, char* argv[]) {
 
 Node* populateList(Node* head, FILE* file) {
 	char* strNum = malloc(sizeof(char) * 128);
-	while (!feof(file) && (fscanf(file, "%s", strNum) != EOF)) {
-		int num = atoi(strNum);
+	while (!feof(file) && (fscanf(file, "%s", strNum) != EOF))
 		if (isPts(strNum))
-			head = insertOrdered(head, num);
-	}
+			head = insertOrdered(head, atoi(strNum));
 	return head;
 }
 
