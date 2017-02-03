@@ -1,0 +1,6 @@
+Nome: Latte          	Quantita': 1 	Prezzo: 0.89  
+Nome: Carne          	Quantita': 1 	Prezzo: 6.43  
+Nome: Cioccolato     	Quantita': 1 	Prezzo: 2.59  
+Nome: RedBull        	Quantita': 2 	Prezzo: 1.19  
+
+Totale spesa: 12.29 
