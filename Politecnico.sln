@@ -129,6 +129,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Esercizio27", "Esercizio27\
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CharacterInput", "CharacterInput\CharacterInput.pyproj", "{C7F1D2D7-A2B9-4E2E-BE4F-91F64CD9C747}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "OddOrEven", "OddOrEven\OddOrEven.pyproj", "{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ListLessThanTen", "ListLessThanTen\ListLessThanTen.pyproj", "{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -761,6 +765,18 @@ Global
 		{C7F1D2D7-A2B9-4E2E-BE4F-91F64CD9C747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7F1D2D7-A2B9-4E2E-BE4F-91F64CD9C747}.Release|x64.ActiveCfg = Release|Any CPU
 		{C7F1D2D7-A2B9-4E2E-BE4F-91F64CD9C747}.Release|x86.ActiveCfg = Release|Any CPU
+		{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}.Release|x64.ActiveCfg = Release|Any CPU
+		{229D5BCB-AFA3-4FC8-92BB-5601BDBBFF81}.Release|x86.ActiveCfg = Release|Any CPU
+		{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}.Release|x64.ActiveCfg = Release|Any CPU
+		{C333AECE-AEEE-484B-B1A4-FF228BA4E83B}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
