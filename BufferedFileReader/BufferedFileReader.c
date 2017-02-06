@@ -20,13 +20,14 @@ int main() {
 	printf("Buffer:\n\n");
 	char* text = readAndGet(file);
 	printf("%s", text);
+	fclose(file);
 	return 0;
 }
 
 void readAndPrint(FILE* file) {
 	char* buffer = malloc(sizeof(char) * STR_SIZE);
 	size_t nRead;
-	while ((nRead = fread(buffer, 1, BUFFER_SIZE, file)) > 0) {
+	while ((nRead = fread(buffer, sizeof(char), BUFFER_SIZE, file)) > 0) {
 		buffer[nRead] = 0;
 		printf("%s", buffer);
 	}
@@ -40,7 +41,7 @@ char* readAndGet(FILE* file) {
 	while ((nRead = fread(buffer, sizeof(char), sizeof(buffer), file)) > 0) {
 		textSize += nRead;
 		text = realloc(text, textSize);
-		memcpy(&text[textSize-nRead], buffer, nRead);
+		memcpy(&text[textSize - nRead], buffer, nRead);
 	}
 	free(buffer);
 	return text;
