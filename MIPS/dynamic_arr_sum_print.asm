@@ -141,7 +141,7 @@
 		print_new_line:
 			addiu $sp, $sp, 4
 			sw $ra, 0($sp)
-			la 	$a0, new_line
+			la $a0, new_line
 			jal print_str
 			lw $ra, 0($sp)
 			addiu $sp, $sp, -4
