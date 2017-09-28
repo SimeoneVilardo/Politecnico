@@ -8,8 +8,12 @@
 	.eqv EXIT 10
 	prompt_len: .asciiz "Inserire la lunghezza dell'array: "
 	prompt_elem: .asciiz "Inserire l'elemento numero "
-	prompt_colon: .asciiz ": "
+	colon: .asciiz ": "
 	prompt_result: .asciiz "Il risultato della somma di ogni elemento nell'array è: "
+	prompt_ltz: .asciiz "Il risultato è minore di 0"
+	prompt_gtz: .asciiz "Il risultato è maggiore di 0"
+	prompt_eqz: .asciiz "Il risultato è esattamente 0"
+	new_line: .asciiz "\n"
 	
 .text
 	.globl main
@@ -17,6 +21,7 @@
 		# $s1 = base array address
 		# $s2 = current iteration index
 		# $s3 = current array address
+		# $s4 = sum result
 		# $t0 = array address offset
 		main:
 			la $a0, prompt_len
@@ -41,7 +46,7 @@
 			jal print_str
 			addi $a0, $s2, 1
 			jal print_int
-			la $a0, prompt_colon
+			la $a0, colon
 			jal print_str
 			
 			jal read_int
@@ -54,7 +59,19 @@
 			move $a1, $s1
 			
 			jal sum_array
-		
+			move $s4, $v0
+			jal print_new_line
+			
+			bgt $s4, $zero, if
+			blt $s4, $zero, else
+			la $a0, prompt_eqz
+			j end_if
+			if: la $a0, prompt_gtz
+			j end_if
+			else: la $a0, prompt_ltz
+			j end_if
+			end_if: jal print_str
+			
 			li $v0, EXIT
 			syscall
 			
@@ -91,6 +108,7 @@
 			jal print_str
 			move $a0, $s3
 			jal print_int
+			move $v0, $s3
 			
 			lw $ra, -16($sp)
 			lw $s0, -12($sp)
@@ -98,7 +116,7 @@
 			lw $s2, -4($sp)
 			lw $s3, 0($sp)
 			addiu $sp, $sp, 12
-			
+
 			jr $ra
 			
 			
@@ -120,6 +138,14 @@
 			syscall		
 			jr $ra
 			
+		print_new_line:
+			addiu $sp, $sp, 4
+			sw $ra, 0($sp)
+			la 	$a0, new_line
+			jal print_str
+			lw $ra, 0($sp)
+			addiu $sp, $sp, -4
+			jr $ra
 			
 		read_int:
 			li $v0, READ_INT
